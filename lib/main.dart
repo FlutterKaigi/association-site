@@ -1,3 +1,4 @@
+import 'package:associate_site/components/footer_section.dart';
 import 'package:associate_site/components/title_section.dart';
 import 'package:associate_site/constants.dart';
 import 'package:flutter/material.dart';
@@ -111,6 +112,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   );
                 }).toList(),
+                const FooterSection(),
               ],
             ),
           ),

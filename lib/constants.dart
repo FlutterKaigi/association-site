@@ -30,3 +30,10 @@ final purposes = [
   '技術共有、コミュニケーションを目的とした催しの支援および人材育成',
   '前各号に附帯又は関連する事業',
 ];
+
+final links = [
+  ['github', 'https://github.com/FlutterKaigi'],
+  ['twitter', 'https://x.com/FlutterKaigi'],
+  ['medium', 'https://medium.com/FlutterKaigi'],
+  ['discord', 'https://discord.com/invite/Nr7H8JTJSF'],
+];
