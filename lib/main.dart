@@ -1,8 +1,9 @@
+import 'package:associate_site/components/footer_section.dart';
+import 'package:associate_site/components/text_link_button.dart';
 import 'package:associate_site/components/title_section.dart';
 import 'package:associate_site/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -69,30 +70,12 @@ class MyHomePage extends StatelessWidget {
                                             color: Colors.grey[500],
                                           ),
                                         ),
-                                        InkWell(
-                                          splashColor: Colors.transparent,
-                                          onTap: () async {
-                                            Uri url = Uri.parse(n[1]);
-                                            await launchUrl(url);
-                                          },
-                                          child: Container(
-                                            height: 30,
-                                            width: 100,
-                                            color: Colors.red,
-                                            child: const Center(
-                                              child: Text(
-                                                'PDF を開く',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                        TextLinkButton(
+                                          name: 'PDF を開く',
+                                          href: n[1],
                                         ),
                                       ],
                                     ),
-                                    const Gap(8),
                                   ],
                                 ),
                               )
@@ -111,6 +94,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   );
                 }).toList(),
+                const FooterSection(),
               ],
             ),
           ),
