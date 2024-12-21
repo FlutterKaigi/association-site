@@ -34,6 +34,6 @@ final purposes = [
 final links = [
   ['github', 'https://github.com/FlutterKaigi'],
   ['twitter', 'https://x.com/FlutterKaigi'],
-  ['medium', 'https://medium.com/FlutterKaigi'],
+  ['medium', 'https://medium.com/flutterkaigi'],
   ['discord', 'https://discord.com/invite/Nr7H8JTJSF'],
 ];
