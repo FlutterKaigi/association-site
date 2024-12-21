@@ -71751,7 +71751,7 @@ $.alV=function(){var s=t.s
 return A.a([A.a(["2023\u5e74\u5ea6(\u4ee4\u548c5\u5e74\u5ea6)\u8cb8\u501f\u5bfe\u7167\u8868","https://drive.google.com/file/d/178O_RqmSR-qdaSGbv9RN6IoEuM7I6If8/view?usp=drive_link"],s),A.a(["2024\u5e74\u5ea6(\u4ee4\u548c6\u5e74\u5ea6)\u8cb8\u501f\u5bfe\u7167\u8868","https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=drive_link"],s)],A.Z("r<G<h>>"))}()
 $.amc=A.a(["\u30a8\u30f3\u30b8\u30cb\u30a2\u3092\u5bfe\u8c61\u3068\u3057\u305f\u50ac\u3057\u306e\u958b\u50ac\u3001\u307e\u305f\u904b\u55b6","\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u80b2\u6210\u306e\u63a8\u9032\u3092\u56f3\u308b\u6d3b\u52d5","\u6280\u8853\u5171\u6709\u3001\u30b3\u30df\u30e5\u30cb\u30b1\u30fc\u30b7\u30e7\u30f3\u3092\u76ee\u7684\u3068\u3057\u305f\u50ac\u3057\u306e\u652f\u63f4\u304a\u3088\u3073\u4eba\u6750\u80b2\u6210","\u524d\u5404\u53f7\u306b\u9644\u5e2f\u53c8\u306f\u95a2\u9023\u3059\u308b\u4e8b\u696d"],t.s)
 $.alP=function(){var s=t.s
-return A.a([A.a(["github","https://github.com/FlutterKaigi"],s),A.a(["twitter","https://x.com/FlutterKaigi"],s),A.a(["medium","https://medium.com/FlutterKaigi"],s),A.a(["discord","https://discord.com/invite/Nr7H8JTJSF"],s)],A.Z("r<G<h>>"))}()
+return A.a([A.a(["github","https://github.com/FlutterKaigi"],s),A.a(["twitter","https://x.com/FlutterKaigi"],s),A.a(["medium","https://medium.com/flutterkaigi"],s),A.a(["discord","https://discord.com/invite/Nr7H8JTJSF"],s)],A.Z("r<G<h>>"))}()
 $.hO=A.ayj()
 $.add=0
 $.arj=A.a([],A.Z("r<aCK>"))
