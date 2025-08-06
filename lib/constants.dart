@@ -23,6 +23,10 @@ final notices = [
     '2024年度(令和6年度)貸借対照表',
     'https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=drive_link',
   ],
+  [
+    '2025年度(令和7年度)貸借対照表',
+    'https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=drive_link',
+  ],
 ];
 
 final purposes = [
