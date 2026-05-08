@@ -16,19 +16,21 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'beta'
+          channel: stable
           cache: true
 
-      - name: Install dependencies
-        run: |
-          flutter pub get
+      - name: Install Jaspr CLI
+        run: dart pub global activate jaspr_cli
+
+      - name: Get dependencies
+        run: dart pub get
 
       - name: Transpile
         run: |
-          flutter build web --base-href "/"
+          jaspr build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          publish_dir: ./build/jaspr
