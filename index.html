@@ -1,52 +1,195 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Flutterカンファレンス「FlutterKaigi」は、一般社団法人FlutterKaigiの下で運営しています。">
-  <meta name="title" content="運営団体について">
-
-  <!-- Open Graph Protocol -->
-  <meta property="og:type" content="website">
-  <meta property="og:description" content="Flutterカンファレンス「FlutterKaigi」は、一般社団法人FlutterKaigiの下で運営しています。">
-  <meta property="og:title" content="運営団体について">
-  <meta property="og:url" content="https://association.flutterkaigi.jp/">
-  <meta property="og:image" content="https://i.imgur.com/OWWQXq4.png">
-
-  <!-- Open Graph Protocol - Twitter -->
-  <meta name="twitter:description" content="Flutterカンファレンス「FlutterKaigi」は、一般社団法人FlutterKaigiの下で運営しています。">
-  <meta name="twitter:title" content="運営団体について">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="運営団体について">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>運営団体について</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
+  <head>
+    <base href="/"/>
+    <meta charset="utf-8"/>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+      html, body {
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+      }
+      h1 {
+        margin: unset;
+        font-size: 4rem;
+      }
+    </style>
+    <!--$-->
+    <title>associate_site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--/-->
+    <script src="main.client.dart.js" defer></script>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        color: #12005E;
+        font-family: 'sans-serif';
+        background-color: #F8F7FF;
+      }
+      .content-wrapper {
+        max-width: 1000px;
+        padding: 80px 24px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .info-section {
+        margin-bottom: 48px;
+      }
+      h3 {
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+      .sub-label {
+        display: block;
+        margin-top: 24px;
+        color: #6200EA;
+        font-weight: bold;
+      }
+      .announcement-row {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .pdf-button {
+        padding: 10px 28px;
+        border-radius: 2px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #FF5242;
+      }
+      .cards-grid {
+        display: grid;
+        margin-top: 40px;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+      .card {
+        display: flex;
+        padding: 32px;
+        border: solid rgba(0, 0, 0, 0.05) 1px;
+        border-radius: 24px;
+        flex-direction: column;
+        gap: 16px;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+      .doc-link {
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        justify-content: space-between;
+        color: #007AFF;
+        text-decoration: none;
+      }
+      .social-tile {
+        display: flex;
+        padding: 16px;
+        border-radius: 16px;
+        align-items: center;
+        color: #12005E;
+        text-decoration: none;
+        background-color: #E3F2FD;
+      }
+      .tile-icon {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        margin-right: 16px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        background-color: #BBDEFB;
+      }
+      .tile-title {
+        display: block;
+        font-weight: bold;
+      }
+      .tile-sub {
+        color: #7E57C2;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <main>
+        <div class="content-wrapper">
+          <div class="info-section"><h3>名称</h3><p>一般社団法人FlutterKaigi / FlutterKaigi Association</p></div>
+          <div class="info-section"><h3>主たる事務所</h3><p>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</p></div>
+          <div class="info-section">
+            <h3>法人の公告方法</h3>
+            <p>当法人の公告は、電子公告により行う</p>
+            <div class="announcement-row">
+              <span>2022年度(令和4年度)貸借対照表</span>
+              <a class="pdf-button" href="https://drive.google.com/file/d/178O_RqmSR-qdaSGbv9RN6IoEuM7I6If8/view?usp=sharing">PDF を開く</a>
+            </div>
+            <div class="announcement-row">
+              <span>2023年度(令和5年度)貸借対照表</span>
+              <a class="pdf-button" href="https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=sharing">PDF を開く</a>
+            </div>
+            <div class="announcement-row">
+              <span>2024年度(令和6年度)貸借対照表</span>
+              <a class="pdf-button" href="https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=sharing">PDF を開く</a>
+            </div>
+          </div>
+          <div class="info-section">
+            <h3>特定商取引法に基づく表記</h3>
+            <strong class="sub-label">事業者</strong>
+            <p>一般社団法人FlutterKaigi / FlutterKaigi Association</p>
+            <strong class="sub-label">代表者</strong>
+            <p>菊池寛 / Hiroshi Kikuchi</p>
+            <strong class="sub-label">所在地</strong>
+            <p>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</p>
+            <strong class="sub-label">電話番号</strong>
+            <p>※当社ではお電話によるお問い合わせは承っておりません。FlutterKaigi お問い合わせフォーム までご連絡くださいますようお願いいたします。</p>
+            <strong class="sub-label">販売価格</strong>
+            <p>各商品に表記された価格に準じます。</p>
+            <strong class="sub-label">サービス代金以外の料金</strong>
+            <p>注文手数料（コンビニ、ATM 決済の場合）</p>
+            <strong class="sub-label">代金の支払い時期および決済方法</strong>
+            <p>クレジットカード（即時）、コンビニ決済（支払期限まで）、ATM 決済（支払期限まで） ※予定が変更される場合があります。</p>
+            <strong class="sub-label">サービスの提供時期</strong>
+            <p>FlutterKaigiの開催日</p>
+            <strong class="sub-label">返品・返金</strong>
+            <p>
+              チケット購入から 50 日未満、かつ決済方法がクレジットカードの場合のみ、チケットのキャンセル・返金が可能です。コンビニ、ATM 決済ではキャンセル・返金できませんので、あらかじめご了承ください。キャンセルをご希望の場合は、購入後に届く購入完了メールに記載されている購入者のお名前、注文番号を添えて、FlutterKaigi お問い合わせフォームよりご連絡ください。
+            </p>
+          </div>
+          <div class="cards-grid">
+            <div class="card">
+              <h3>📄 ドキュメント</h3>
+              <p>日本語で書かれた以下のドキュメントをご覧いただけます。</p>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Code-of-Conduct.ja">行動規範<span>→</span></a>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Privacy-Policy.ja">プライバシーポリシー<span>→</span></a>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Exclusion-of-Anti-Social-Forces.ja">反社会的勢力排除ポリシー<span>→</span></a>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Event-Guidelines.ja">関連イベントのガイドライン<span>→</span></a>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Terms-for-Join.ja">イベント参加規約<span>→</span></a>
+              <a class="doc-link" href="https://docs.flutterkaigi.jp/Logo-Guidelines.ja">ロゴ使用ガイドライン<span>→</span></a>
+            </div>
+            <div class="card">
+              <h3>👥 コミュニティに参加する</h3>
+              <p>
+                FlutterKaigiのコミュニティに参加して、最新情報を入手したり、他の開発者と交流したりしましょう。なお、FlutterKaigiについては、一般社団法人FlutterKaigiの協力をもって開催されます。
+              </p>
+              <a class="social-tile" href="https://x.com/FlutterKaigi">
+                <div class="tile-icon">🐦</div>
+                <div><strong class="tile-title">X</strong><span class="tile-sub">@FlutterKaigiをフォロー</span></div>
+              </a>
+              <a class="social-tile" href="https://github.com/FlutterKaigi">
+                <div class="tile-icon">📂</div>
+                <div><strong class="tile-title">GitHub</strong><span class="tile-sub">FlutterKaigiリポジトリに貢献する</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer><p>© 2021-2026 一般社団法人FlutterKaigi</p></footer>
+    </div>
+  </body>
 </html>
