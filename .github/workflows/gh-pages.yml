@@ -20,7 +20,7 @@ jobs:
           cache: true
 
       - name: Install Jaspr CLI
-        run: dart pub global activate jaspr_cli
+        run: dart pub global activate jaspr_cli 0.22.4
 
       - name: Get dependencies
         run: dart pub get
