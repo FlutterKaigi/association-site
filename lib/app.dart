@@ -130,7 +130,7 @@ class CorporateInfoPage extends StatelessComponent {
         ]),
         _section('特定商取引法に基づく表記', [
           _sub('事業者'), p([text('一般社団法人FlutterKaigi / FlutterKaigi Association')]),
-          _sub('代表者'), p([text('菊池寛 / Hiroshi Kikuchi')]),
+          _sub('代表者'), p([text('菊池紘 / Hiroshi Kikuchi')]),
           _sub('所在地'), p([text('東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609')]),
           _sub('電話番号'), p([text('※当社ではお電話によるお問い合わせは承っておりません。FlutterKaigi お問い合わせフォーム までご連絡くださいますようお願いいたします。')]),
           _sub('販売価格'), p([text('各商品に表記された価格に準じます。')]),
