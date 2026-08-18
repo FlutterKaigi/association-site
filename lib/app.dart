@@ -127,6 +127,10 @@ class CorporateInfoPage extends StatelessComponent {
             span([text('2024年度(令和6年度)貸借対照表')]),
             a(href: 'https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=sharing', classes: 'pdf-button', [text('PDF を開く')]),
           ]),
+          div(classes: 'announcement-row', [
+            span([text('2025年度(令和7年度)貸借対照表')]),
+            a(href: 'https://drive.google.com/file/d/1T6cHwex1rjlLvs3Zhx3vA-_kxtAwyc_b/view?usp=sharing', classes: 'pdf-button', [text('PDF を開く')]),
+          ]),
         ]),
         _section('特定商取引法に基づく表記', [
           _sub('事業者'), p([text('一般社団法人FlutterKaigi / FlutterKaigi Association')]),
