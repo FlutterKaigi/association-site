@@ -18,6 +18,9 @@ import 'main.server.options.dart';
 const _title = '一般社団法人FlutterKaigi | FlutterKaigi Association';
 const _description = '一般社団法人FlutterKaigiの法人概要、電子公告、特定商取引法に基づく表記、および各種ドキュメントをご案内します。';
 
+/// 公開先。OG のクローラは相対パスを解決しないので、絶対 URL を組み立てる。
+const _siteUrl = 'https://association.flutterkaigi.jp/';
+
 /// スクロールに入った要素をフェードインさせる。
 ///
 /// `.js-reveal` を自分で付けてから観測を始めるので、JS が動かない環境では
@@ -62,7 +65,10 @@ void main() {
         'og:title': _title,
         'og:description': _description,
         'og:type': 'website',
-        'og:image': '/images/logo.svg',
+        'og:url': _siteUrl,
+        // 主要な OG クローラは SVG を描画しないので、差し替えるときは PNG を
+        // 置くこと。パスは絶対 URL でなければ解決されない。
+        'og:image': '${_siteUrl}images/logo.svg',
         'twitter:card': 'summary',
       },
       styles: [
@@ -101,7 +107,10 @@ void main() {
         css('h1, h2, h3, p').styles(margin: Margin.zero),
         css('img, svg').styles(display: Display.block, maxWidth: 100.percent),
       ],
-      head: const [script(content: _revealScript)],
+      head: const [
+        link(rel: 'canonical', href: _siteUrl),
+        script(content: _revealScript),
+      ],
       body: const App(),
     ),
   );

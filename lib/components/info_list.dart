@@ -70,8 +70,8 @@ class InfoList extends StatelessComponent {
       // 本文中のアンカーリンク。下線と差し色だけで、ボタンには見せない。
       css('dd .inline-link', [
         css('&').styles(
-          color: DesignTokens.accent,
           transition: const Transition('color', duration: Duration(milliseconds: 200)),
+          color: DesignTokens.accent,
           textDecoration: const TextDecoration(line: TextDecorationLine.underline),
           raw: {'text-underline-offset': '0.2em'},
         ),

@@ -19,7 +19,7 @@
   },
 
   // @see https://dartcode.org/docs/settings/#dartlinelength
-  "dart.lineLength": 80,
+  "dart.lineLength": 120,
 
   // @see https://dartcode.org/docs/recommended-settings/
   "[dart]": {
@@ -32,8 +32,9 @@
       "source.organizeImports": "explicit"
     },
 
-    // Draw a guide line at 80 characters, where Dart's formatting will wrap code.
-    "editor.rulers": [80],
+    // Draw a guide line at 120 characters, matching formatter.page_width in
+    // analysis_options.yaml, where Dart's formatting will wrap code.
+    "editor.rulers": [120],
 
     // Disables built-in highlighting of words that match your selection. Without
     // this, all instances of the selected text will be highlighted, interfering
@@ -70,7 +71,7 @@
     "editor.suggest.insertMode": "replace",
 
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 80
+    "editor.wordWrapColumn": 120
   },
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"

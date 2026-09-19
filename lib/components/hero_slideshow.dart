@@ -24,8 +24,7 @@ class HeroSlideshow extends StatelessComponent {
   static const _slideHeight = 1280;
 
   /// 1 巡の長さ。1 枚あたり [DesignTokens.heroSlideSeconds] 秒。
-  static Duration get _cycle =>
-      Duration(seconds: DesignTokens.heroSlideSeconds * _slides.length);
+  static Duration get _cycle => Duration(seconds: DesignTokens.heroSlideSeconds * _slides.length);
 
   /// ぼかしの滲みで端に素地が覗かないよう、少しだけ拡大して敷く。
   static const _slideScale = 1.12;
@@ -57,8 +56,8 @@ class HeroSlideshow extends StatelessComponent {
       css('&').styles(
         position: Position.absolute(top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
         overflow: Overflow.hidden,
-        backgroundColor: DesignTokens.background,
         pointerEvents: PointerEvents.none,
+        backgroundColor: DesignTokens.background,
       ),
       css('img').styles(
         position: Position.absolute(top: 0.px, left: 0.px),
