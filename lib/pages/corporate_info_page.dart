@@ -33,13 +33,7 @@ class CorporateInfoPage extends StatelessComponent {
   ///   linkHref: 'https://flutterkaigi.jp/',
   /// );
   /// ```
-  /// static const EmergencyNotice? _emergencyNotice = null;
-  static const _emergencyNotice = EmergencyNotice(
-    title: 'FlutterKaigi YYYY の開催延期について',
-    text: '台風の接近にともない、MM月DD日の開催を延期いたします。詳細は下記のお知らせをご確認ください。',
-    linkLabel: '詳細を見る',
-    linkHref: 'https://flutterkaigi.jp/',
-  );
+  static const EmergencyNotice? _emergencyNotice = null;
 
   /// 定款第 3 条（目的）の柱書。
   static const _purposeLead =
