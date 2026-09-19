@@ -34,3 +34,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/jaspr
+          # 指定しないとデプロイのたびに gh-pages の CNAME が消え、
+          # 独自ドメインが切れる。実際に何度か手作業で復旧されている。
+          cname: association.flutterkaigi.jp

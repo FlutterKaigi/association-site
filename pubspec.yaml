@@ -1,5 +1,5 @@
 name: associate_site
-description: A new Jaspr project
+description: 一般社団法人FlutterKaigi の公式サイト (Jaspr / 静的サイト)
 version: 0.0.1
 
 environment:

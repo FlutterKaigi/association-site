@@ -1,6 +1,10 @@
+import 'package:associate_site/constants/links.dart';
+import 'package:associate_site/constants/organization.dart';
+import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+/// sticky なサイトヘッダー。狭幅ではハンバーガーメニューに畳む。
 @client
 class Header extends StatefulComponent {
   const Header({super.key});
@@ -15,29 +19,31 @@ class HeaderState extends State<Header> {
   @override
   Component build(BuildContext context) {
     return header([
-      div(classes: 'header-logo', [
-        a(href: '#home', [Component.text('一般社団法人関西開発者会議')]),
+      a(href: '/', classes: 'header-logo', [
+        img(src: '/images/logo.svg', alt: '', width: 32, height: 32),
+        Component.text(orgName),
       ]),
       button(
         classes: 'menu-toggle ${_isMenuOpen ? 'open' : ''}',
+        attributes: {'aria-label': 'メニュー', 'aria-expanded': '$_isMenuOpen'},
         events: {'click': (e) => setState(() => _isMenuOpen = !_isMenuOpen)},
-        [
-          div(classes: 'bar', []),
-          div(classes: 'bar', []),
-          div(classes: 'bar', []),
-        ],
+        [div(classes: 'bar', []), div(classes: 'bar', []), div(classes: 'bar', [])],
       ),
       nav(classes: _isMenuOpen ? 'open' : '', [
-        _navItem('#home', 'Top'),
+        for (final item in navItems) _navItem(item),
       ]),
     ]);
   }
 
-  Component _navItem(String href, String label) {
+  Component _navItem(LinkItem item) {
     return div(classes: 'nav-link-wrapper', [
-      a(href: href, events: {'click': (e) => setState(() => _isMenuOpen = false)}, [
-        Component.text(label)
-      ]),
+      a(
+        href: item.href,
+        events: {'click': (e) => setState(() => _isMenuOpen = false)},
+        [
+          Component.text(item.label),
+        ],
+      ),
       div(classes: 'underline', []),
     ]);
   }
@@ -47,23 +53,29 @@ class HeaderState extends State<Header> {
     css('header', [
       css('&').styles(
         display: Display.flex,
-        position: Position.fixed(top: 0.px, left: 0.px, right: 0.px),
-        zIndex: ZIndex(1000),
-        padding: Padding.symmetric(horizontal: 40.px, vertical: 15.px),
-        shadow: BoxShadow(
-          blur: 20.px,
-          color: Color('rgba(0,0,0,0.05)'),
-          offsetX: 0.px,
-          offsetY: 4.px,
-        ),
+        position: Position.sticky(top: 0.px),
+        zIndex: const ZIndex(1000),
+        height: DesignTokens.headerHeight.px,
+        padding: Padding.symmetric(horizontal: DesignTokens.gutter.px),
+        border: const Border.only(bottom: DesignTokens.hairline),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
-        backgroundColor: Color('rgba(255, 255, 255, 0.85)'),
-        raw: {
-          'backdrop-filter': 'blur(12px)',
-          '-webkit-backdrop-filter': 'blur(12px)',
-        },
+        backgroundColor: DesignTokens.background,
       ),
+
+      css('.header-logo', [
+        css('&').styles(
+          display: Display.flex,
+          alignItems: AlignItems.center,
+          gap: Gap.all(10.px),
+          color: DesignTokens.ink,
+          fontSize: Typography.body,
+          fontWeight: FontWeight.w700,
+          textDecoration: TextDecoration.none,
+          letterSpacing: const Unit.em(0.01),
+        ),
+        css('img').styles(radius: BorderRadius.circular(50.percent)),
+      ]),
 
       css('.menu-toggle').styles(
         display: Display.none,
@@ -83,68 +95,42 @@ class HeaderState extends State<Header> {
 
       css('.menu-toggle .bar').styles(
         display: Display.block,
-        width: 24.px,
-        height: 2.px,
-        transition: Transition('all', duration: Duration(milliseconds: 300)),
-        backgroundColor: Color('#111827'),
-      ),
-
-      css('.header-logo a').styles(
-        color: Color('#111827'),
-        fontSize: 1.5.rem,
-        fontWeight: FontWeight.w800,
-        textDecoration: TextDecoration.none,
+        width: 22.px,
+        height: 1.5.px,
+        transition: const Transition.combine([
+          Transition('transform', duration: Duration(milliseconds: 300)),
+          Transition('opacity', duration: Duration(milliseconds: 300)),
+        ]),
+        backgroundColor: DesignTokens.ink,
       ),
 
       css('nav', [
-        css('&').styles(
-          display: Display.flex,
-          alignItems: AlignItems.center,
-          gap: Gap.all(8.px),
-        ),
+        css('&').styles(display: Display.flex, alignItems: AlignItems.center, gap: Gap.all(4.px)),
         css('.nav-link-wrapper', [
           css('&').styles(position: Position.relative()),
           css('a').styles(
-            padding: Padding.symmetric(horizontal: 16.px, vertical: 8.px),
-            transition: Transition('color', duration: Duration(milliseconds: 200)),
-            color: Color('#4B5563'),
-            fontWeight: FontWeight.w600,
+            display: Display.block,
+            padding: Padding.symmetric(horizontal: 14.px, vertical: 8.px),
+            transition: const Transition('color', duration: DesignTokens.motion),
+            color: DesignTokens.inkMuted,
+            fontSize: Typography.bodyXs,
+            fontWeight: FontWeight.w500,
             textDecoration: TextDecoration.none,
           ),
-          css('&:hover a').styles(color: Color('#007AFF')),
+          css('&:hover a').styles(color: DesignTokens.ink),
           css('.underline').styles(
-            position: Position.absolute(bottom: 0.px, left: 16.px, right: 16.px),
-            height: 2.px,
-            transition: Transition('transform', duration: Duration(milliseconds: 300)),
-            transform: Transform.scale(0),
-            backgroundColor: Color('#007AFF'),
+            position: Position.absolute(bottom: 4.px, left: 14.px, right: 14.px),
+            height: 1.px,
+            transition: const Transition('transform', duration: Duration(milliseconds: 250)),
+            transform: const Transform.scale(0),
+            backgroundColor: DesignTokens.accent,
           ),
-          css('&:hover .underline').styles(transform: Transform.scale(1)),
+          css('&:hover .underline').styles(transform: const Transform.scale(1)),
         ]),
-        css('.nav-btn').styles(
-          padding: Padding.symmetric(horizontal: 24.px, vertical: 12.px),
-          margin: Margin.only(left: 16.px),
-          radius: BorderRadius.circular(50.px),
-          shadow: BoxShadow(
-            blur: 10.px,
-            color: Color('rgba(0,0,0,0.1)'),
-            offsetX: 0.px,
-            offsetY: 4.px,
-          ),
-          transition: Transition('all', duration: Duration(milliseconds: 200)),
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          textDecoration: TextDecoration.none,
-          backgroundColor: Color('#111827'),
-        ),
-        css('.nav-btn:hover').styles(
-          transform: Transform.translate(y: (-2).px),
-          backgroundColor: Color('#374151'),
-        ),
       ]),
     ]),
 
-    css.media(MediaQuery.screen(maxWidth: 900.px), [
+    css.media(MediaQuery.screen(maxWidth: DesignTokens.breakpointMd.px), [
       css('header .menu-toggle').styles(
         display: Display.flex,
         justifyContent: JustifyContent.center,
@@ -154,38 +140,28 @@ class HeaderState extends State<Header> {
       css('header nav').styles(
         display: Display.none,
         position: Position.absolute(top: 100.percent, left: 0.px, right: 0.px),
-        padding: Padding.all(24.px),
-        shadow: BoxShadow(
-          blur: 20.px,
-          color: Color('rgba(0,0,0,0.1)'),
-          offsetX: 0.px,
-          offsetY: 10.px,
-        ),
+        padding: Padding.symmetric(vertical: 16.px, horizontal: DesignTokens.gutter.px),
+        border: const Border.only(bottom: DesignTokens.hairline),
         flexDirection: FlexDirection.column,
-        gap: Gap.all(16.px),
-        backgroundColor: Colors.white,
+        alignItems: AlignItems.stretch,
+        gap: Gap.all(4.px),
+        backgroundColor: DesignTokens.background,
       ),
 
       css('header nav.open').styles(display: Display.flex),
 
-      css('header .nav-link-wrapper').styles(
-        width: 100.percent,
-        textAlign: TextAlign.center,
+      css('header .nav-link-wrapper a').styles(
+        padding: Padding.symmetric(vertical: 12.px, horizontal: 0.px),
       ),
 
-      css('header .nav-btn').styles(width: 100.percent, margin: Margin.zero),
-
       css('header .menu-toggle.open .bar:nth-child(1)').styles(
-        transform: Transform.combine([
-          Transform.translate(y: 7.px),
-          Transform.rotate(45.deg),
-        ]),
+        transform: const Transform.combine([Transform.translate(y: Unit.pixels(7)), Transform.rotate(Angle.deg(45))]),
       ),
       css('header .menu-toggle.open .bar:nth-child(2)').styles(opacity: 0),
       css('header .menu-toggle.open .bar:nth-child(3)').styles(
-        transform: Transform.combine([
-          Transform.translate(y: (-7).px),
-          Transform.rotate((-45).deg),
+        transform: const Transform.combine([
+          Transform.translate(y: Unit.pixels(-7)),
+          Transform.rotate(Angle.deg(-45)),
         ]),
       ),
     ]),
