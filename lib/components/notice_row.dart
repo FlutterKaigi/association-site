@@ -1,4 +1,5 @@
 import 'package:associate_site/components/icons.dart';
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/constants/links.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
@@ -12,11 +13,9 @@ class NoticeRow extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return a(
+    return linkTo(
       href: item.href,
       classes: 'notice-row',
-      target: Target.blank,
-      attributes: const {'rel': 'noopener noreferrer'},
       [
         span(classes: 'notice-label', [Component.text(item.label)]),
         span(classes: 'notice-action', [

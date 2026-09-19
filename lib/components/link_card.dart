@@ -1,3 +1,4 @@
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/constants/links.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
@@ -105,11 +106,9 @@ class DocLink extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return a(
+    return linkTo(
       href: item.href,
       classes: 'doc-link',
-      target: Target.blank,
-      attributes: const {'rel': 'noopener noreferrer'},
       [
         span([Component.text(item.label)]),
         span(classes: 'doc-link-arrow', [Component.text('→')]),
@@ -153,11 +152,9 @@ class SocialLink extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return a(
+    return linkTo(
       href: item.href,
       classes: 'social-link',
-      target: Target.blank,
-      attributes: const {'rel': 'noopener noreferrer'},
       [
         div(classes: 'social-icon', [item.icon]),
         div([

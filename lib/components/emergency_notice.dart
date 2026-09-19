@@ -1,4 +1,5 @@
 import 'package:associate_site/components/icons.dart';
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -41,7 +42,7 @@ class EmergencyNoticeBanner extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final href = notice.linkHref;
-    final isExternal = href != null && href.startsWith('http');
+    final external = href != null && isExternalHref(href);
 
     return aside(
       classes: 'emergency',
@@ -53,14 +54,12 @@ class EmergencyNoticeBanner extends StatelessComponent {
         ]),
         p(classes: 'emergency-text', [Component.text(notice.text)]),
         if (notice.hasLink)
-          a(
+          linkTo(
             href: href!,
             classes: 'emergency-link',
-            target: isExternal ? Target.blank : null,
-            attributes: isExternal ? const {'rel': 'noopener noreferrer'} : null,
             [
               span([Component.text(notice.linkLabel!)]),
-              if (isExternal) Icons.arrowUpRight else span(classes: 'emergency-link-arrow', [Component.text('→')]),
+              if (external) Icons.arrowUpRight else span(classes: 'emergency-link-arrow', [Component.text('→')]),
             ],
           ),
       ],

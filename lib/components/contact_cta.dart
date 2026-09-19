@@ -1,4 +1,5 @@
 import 'package:associate_site/components/icons.dart';
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -29,11 +30,9 @@ class ContactCta extends StatelessComponent {
             Component.text('※お電話でのお問い合わせは承っておりません。'),
           ]),
         ]),
-        a(
+        linkTo(
           href: href,
           classes: 'contact-button',
-          target: Target.blank,
-          attributes: const {'rel': 'noopener noreferrer'},
           [
             span([Component.text('お問い合わせフォームを開く')]),
             Icons.arrowUpRight,

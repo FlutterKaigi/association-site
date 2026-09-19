@@ -1,3 +1,4 @@
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/constants/documents.dart';
 import 'package:associate_site/constants/links.dart';
 import 'package:associate_site/constants/organization.dart';
@@ -34,12 +35,7 @@ class SiteFooter extends StatelessComponent {
     for (final item in items) _link(item),
   ]);
 
-  Component _link(LinkItem item) => a(
-    href: item.href,
-    target: Target.blank,
-    attributes: const {'rel': 'noopener noreferrer'},
-    [Component.text(item.label)],
-  );
+  Component _link(LinkItem item) => linkTo([Component.text(item.label)], href: item.href);
 
   @css
   static List<StyleRule> get styles => [
