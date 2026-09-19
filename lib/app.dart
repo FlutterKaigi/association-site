@@ -24,7 +24,7 @@ class App extends StatelessComponent {
         // クライアント側のルーティングで未知のパスに来たとき。
         errorBuilder: (context, state) => const NotFoundPage(),
       ),
-      const SiteFooter(),
+      const Footer(),
     ]);
   }
 

@@ -1,3 +1,4 @@
+import 'package:associate_site/components/link.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -20,6 +21,14 @@ class InfoList extends StatelessComponent {
   const InfoList(this.entries, {super.key});
 
   final List<InfoEntry> entries;
+
+  /// 値の本文中に置くアンカーリンク。
+  ///
+  /// スタイルが `dd` の配下にスコープされているので、[InfoEntry.rich] の
+  /// children に渡す形でしか使えない。定義と生成を 1 箇所にまとめるために
+  /// ここに置く。
+  static Component link(String href, String label) =>
+      linkTo([Component.text(label)], href: href, classes: 'info-list-link');
 
   @override
   Component build(BuildContext context) {
@@ -64,7 +73,7 @@ class InfoList extends StatelessComponent {
         raw: {'text-wrap': 'pretty'},
       ),
       // 本文中のアンカーリンク。下線と差し色だけで、ボタンには見せない。
-      css('dd .inline-link', [
+      css('dd .info-list-link', [
         css('&').styles(
           transition: const Transition('color', duration: DesignTokens.motion),
           color: DesignTokens.accent,

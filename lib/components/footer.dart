@@ -7,8 +7,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// サイトフッター。
-class SiteFooter extends StatelessComponent {
-  const SiteFooter({super.key});
+class Footer extends StatelessComponent {
+  const Footer({super.key});
 
   @override
   Component build(BuildContext context) {

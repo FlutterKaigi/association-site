@@ -4,8 +4,8 @@ import 'package:jaspr/jaspr.dart';
 
 /// 罫線グリッドと差し色の光でできた背景。
 ///
-/// トップの [Hero] と 404 ページで共有する。置く側の要素に
-/// `position: relative` を付け、本文には `z-index: 1` を与えること。
+/// いまはトップの [Hero] だけが使う。置く側の要素に `position: relative` を
+/// 付け、本文には `z-index: 1` を与えること。
 class GridBackdrop extends StatelessComponent {
   const GridBackdrop({super.key});
 

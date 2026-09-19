@@ -71,11 +71,7 @@ class CorporateInfoPage extends StatelessComponent {
   /// 本文中から「お問い合わせ」セクションへ飛ばす内部リンク。
   ///
   /// フォームの URL を直接張らず、同ページの窓口までスクロールさせる。
-  static Component get _contactFormLink => a(
-    href: '#contact',
-    classes: 'inline-link',
-    [Component.text('FlutterKaigi お問い合わせフォーム')],
-  );
+  static Component get _contactFormLink => InfoList.link('#contact', 'FlutterKaigi お問い合わせフォーム');
 
   static List<InfoEntry> get _legal => [
     InfoEntry('事業者', orgNameFull),

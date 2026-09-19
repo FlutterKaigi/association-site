@@ -43,7 +43,7 @@ ServerOptions get defaultServerOptions => ServerOptions(
   styles: () => [
     ..._contact_cta.ContactCta.styles,
     ..._emergency_notice.EmergencyNoticeBanner.styles,
-    ..._footer.SiteFooter.styles,
+    ..._footer.Footer.styles,
     ..._grid_backdrop.GridBackdrop.styles,
     ..._header.HeaderState.styles,
     ..._hero.Hero.styles,
