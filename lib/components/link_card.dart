@@ -111,7 +111,7 @@ class DocLink extends StatelessComponent {
       classes: 'doc-link',
       [
         span([Component.text(item.label)]),
-        span(classes: 'doc-link-arrow', [Component.text('→')]),
+        span(classes: 'link-arrow', [Component.text('→')]),
       ],
     );
   }
@@ -132,14 +132,8 @@ class DocLink extends StatelessComponent {
         textDecoration: TextDecoration.none,
       ),
       css('&:hover').styles(color: DesignTokens.accent),
-      css('.doc-link-arrow').styles(
-        transition: const Transition('transform', duration: DesignTokens.motion),
-        color: DesignTokens.inkMuted,
-      ),
-      css('&:hover .doc-link-arrow').styles(
-        transform: const Transform.translate(x: Unit.pixels(4)),
-        color: DesignTokens.accent,
-      ),
+      css('.link-arrow').styles(color: DesignTokens.inkMuted),
+      css('&:hover .link-arrow').styles(color: DesignTokens.accent),
     ]),
   ];
 }

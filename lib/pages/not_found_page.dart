@@ -24,7 +24,7 @@ class NotFoundPage extends StatelessComponent {
             Component.text('お探しのページは、URL が変更されたか削除された可能性があります。'),
           ]),
           a(href: '/', classes: 'not-found-action', [
-            span(classes: 'not-found-action-arrow', [Component.text('←')]),
+            span(classes: 'link-arrow link-arrow-back', [Component.text('←')]),
             span([Component.text('トップへ戻る')]),
           ]),
         ]),
@@ -95,14 +95,8 @@ class NotFoundPage extends StatelessComponent {
           border: const Border.all(color: DesignTokens.accent, width: Unit.pixels(1)),
           color: DesignTokens.accent,
         ),
-        css('.not-found-action-arrow').styles(
-          transition: const Transition('transform', duration: DesignTokens.motion),
-          color: DesignTokens.inkMuted,
-        ),
-        css('&:hover .not-found-action-arrow').styles(
-          transform: const Transform.translate(x: Unit.pixels(-4)),
-          color: DesignTokens.accent,
-        ),
+        css('.link-arrow').styles(color: DesignTokens.inkMuted),
+        css('&:hover .link-arrow').styles(color: DesignTokens.accent),
       ]),
     ]),
 

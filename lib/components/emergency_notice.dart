@@ -59,7 +59,7 @@ class EmergencyNoticeBanner extends StatelessComponent {
             classes: 'emergency-link',
             [
               span([Component.text(notice.linkLabel!)]),
-              if (external) Icons.arrowUpRight else span(classes: 'emergency-link-arrow', [Component.text('→')]),
+              if (external) Icons.arrowUpRight else span(classes: 'link-arrow', [Component.text('→')]),
             ],
           ),
       ],
@@ -127,10 +127,6 @@ class EmergencyNoticeBanner extends StatelessComponent {
           color: DesignTokens.background,
           backgroundColor: DesignTokens.alertHover,
         ),
-        css('.emergency-link-arrow').styles(
-          transition: const Transition('transform', duration: DesignTokens.motion),
-        ),
-        css('&:hover .emergency-link-arrow').styles(transform: const Transform.translate(x: Unit.pixels(4))),
       ]),
     ]),
 
@@ -139,10 +135,6 @@ class EmergencyNoticeBanner extends StatelessComponent {
         padding: Padding.symmetric(vertical: 18.px, horizontal: 20.px),
         margin: Margin.only(top: 36.px, left: Unit.auto, right: Unit.auto),
       ),
-    ]),
-
-    css.media(DesignTokens.reducedMotion, [
-      css('.emergency .emergency-link-arrow').styles(raw: {'transition': 'none'}),
     ]),
   ];
 }

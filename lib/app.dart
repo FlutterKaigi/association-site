@@ -56,12 +56,26 @@ class App extends StatelessComponent {
       'html.js-reveal [data-reveal].is-visible',
     ).styles(opacity: 1, transform: const Transform.translate(y: Unit.zero)),
 
+    // リンクの末尾に置く矢印。hover でリンクの向きへ少し進む。
+    //
+    // ドキュメント一覧・緊急のお知らせ・404 の 3 つで共有する。色は「その矢印が
+    // どの面に載るか」で変わるので各コンポーネント側で決め、ここでは動きだけを
+    // 持つ。グローバルに置けるのは、jaspr_builder が lib/app.dart の CSS を
+    // 最後に出力するため、各コンポーネントのルールより後に来ると保証できるから。
+    css('.link-arrow').styles(
+      transition: const Transition('transform', duration: DesignTokens.motion),
+    ),
+    css('a:hover .link-arrow').styles(transform: const Transform.translate(x: Unit.pixels(4))),
+    // 「戻る」リンクだけ逆向き。
+    css('a:hover .link-arrow-back').styles(transform: const Transform.translate(x: Unit.pixels(-4))),
+
     css.media(DesignTokens.reducedMotion, [
       css('html.js-reveal [data-reveal]').styles(
         opacity: 1,
         transform: Transform.none,
         raw: {'transition': 'none'},
       ),
+      css('.link-arrow').styles(raw: {'transition': 'none'}),
     ]),
 
     css('::selection').styles(color: DesignTokens.background, backgroundColor: DesignTokens.accent),
