@@ -44,9 +44,7 @@ class InfoList extends StatelessComponent {
       ),
       css('dt').styles(
         padding: Padding.symmetric(vertical: 20.px),
-        border: const Border.only(
-          top: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(top: DesignTokens.hairline),
         color: DesignTokens.ink,
         fontSize: 0.85.rem,
         fontWeight: FontWeight.w600,
@@ -58,9 +56,7 @@ class InfoList extends StatelessComponent {
         maxWidth: 42.rem,
         padding: Padding.symmetric(vertical: 20.px),
         margin: Margin.zero,
-        border: const Border.only(
-          top: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(top: DesignTokens.hairline),
         color: DesignTokens.inkMuted,
         fontSize: 0.9.rem,
         lineHeight: 2.em,
@@ -70,7 +66,7 @@ class InfoList extends StatelessComponent {
       // 本文中のアンカーリンク。下線と差し色だけで、ボタンには見せない。
       css('dd .inline-link', [
         css('&').styles(
-          transition: const Transition('color', duration: Duration(milliseconds: 200)),
+          transition: const Transition('color', duration: DesignTokens.motion),
           color: DesignTokens.accent,
           textDecoration: const TextDecoration(line: TextDecorationLine.underline),
           raw: {'text-underline-offset': '0.2em'},

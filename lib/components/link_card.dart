@@ -58,7 +58,7 @@ class LinkCard extends StatelessComponent {
       css('&').styles(
         display: Display.grid,
         padding: Padding.all(40.px),
-        border: const Border.all(color: DesignTokens.border, width: Unit.pixels(1)),
+        border: DesignTokens.hairlineBox,
         radius: BorderRadius.circular(DesignTokens.radius.px),
         backgroundColor: DesignTokens.background,
         raw: {'grid-row': 'span 4', 'grid-template-rows': 'subgrid', 'row-gap': '0'},
@@ -123,10 +123,8 @@ class DocLink extends StatelessComponent {
       css('&').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 14.px),
-        border: const Border.only(
-          bottom: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
-        transition: const Transition('color', duration: Duration(milliseconds: 200)),
+        border: const Border.only(bottom: DesignTokens.hairline),
+        transition: const Transition('color', duration: DesignTokens.motion),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
         gap: Gap.all(16.px),
@@ -136,7 +134,7 @@ class DocLink extends StatelessComponent {
       ),
       css('&:hover').styles(color: DesignTokens.accent),
       css('.doc-link-arrow').styles(
-        transition: const Transition('transform', duration: Duration(milliseconds: 200)),
+        transition: const Transition('transform', duration: DesignTokens.motion),
         color: DesignTokens.inkMuted,
       ),
       css('&:hover .doc-link-arrow').styles(
@@ -176,9 +174,7 @@ class SocialLink extends StatelessComponent {
       css('&').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 14.px),
-        border: const Border.only(
-          bottom: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(bottom: DesignTokens.hairline),
         alignItems: AlignItems.center,
         gap: Gap.all(16.px),
         color: DesignTokens.ink,
@@ -188,9 +184,12 @@ class SocialLink extends StatelessComponent {
         display: Display.flex,
         width: 40.px,
         height: 40.px,
-        border: const Border.all(color: DesignTokens.border, width: Unit.pixels(1)),
+        border: DesignTokens.hairlineBox,
         radius: BorderRadius.circular(50.percent),
-        transition: const Transition('all', duration: Duration(milliseconds: 200)),
+        transition: const Transition.combine([
+          Transition('border-color', duration: DesignTokens.motion),
+          Transition('color', duration: DesignTokens.motion),
+        ]),
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
       ),

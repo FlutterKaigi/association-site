@@ -25,12 +25,12 @@ class GridBackdrop extends StatelessComponent {
   static List<StyleRule> get styles => [
     css('.grid-backdrop', [
       css('&').styles(
-        position: Position.absolute(top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
+        position: DesignTokens.fillParent,
         overflow: Overflow.hidden,
         pointerEvents: PointerEvents.none,
       ),
       css('> div').styles(
-        position: Position.absolute(top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
+        position: DesignTokens.fillParent,
       ),
       // 右上から落とす差し色の光。ぼかしきっているのでマスクは要らない。
       css('.grid-backdrop-glow').styles(

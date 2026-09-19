@@ -57,9 +57,7 @@ class HeaderState extends State<Header> {
         zIndex: const ZIndex(1000),
         height: DesignTokens.headerHeight.px,
         padding: Padding.symmetric(horizontal: DesignTokens.gutter.px),
-        border: const Border.only(
-          bottom: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(bottom: DesignTokens.hairline),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
         backgroundColor: DesignTokens.background,
@@ -99,7 +97,10 @@ class HeaderState extends State<Header> {
         display: Display.block,
         width: 22.px,
         height: 1.5.px,
-        transition: const Transition('all', duration: Duration(milliseconds: 300)),
+        transition: const Transition.combine([
+          Transition('transform', duration: Duration(milliseconds: 300)),
+          Transition('opacity', duration: Duration(milliseconds: 300)),
+        ]),
         backgroundColor: DesignTokens.ink,
       ),
 
@@ -110,7 +111,7 @@ class HeaderState extends State<Header> {
           css('a').styles(
             display: Display.block,
             padding: Padding.symmetric(horizontal: 14.px, vertical: 8.px),
-            transition: const Transition('color', duration: Duration(milliseconds: 200)),
+            transition: const Transition('color', duration: DesignTokens.motion),
             color: DesignTokens.inkMuted,
             fontSize: 0.85.rem,
             fontWeight: FontWeight.w500,
@@ -140,9 +141,7 @@ class HeaderState extends State<Header> {
         display: Display.none,
         position: Position.absolute(top: 100.percent, left: 0.px, right: 0.px),
         padding: Padding.symmetric(vertical: 16.px, horizontal: DesignTokens.gutter.px),
-        border: const Border.only(
-          bottom: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(bottom: DesignTokens.hairline),
         flexDirection: FlexDirection.column,
         alignItems: AlignItems.stretch,
         gap: Gap.all(4.px),

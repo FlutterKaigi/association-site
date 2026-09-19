@@ -46,9 +46,7 @@ class SiteFooter extends StatelessComponent {
     css('.site-footer', [
       css('&').styles(
         padding: Padding.symmetric(vertical: 80.px, horizontal: 0.px),
-        border: const Border.only(
-          top: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.only(top: DesignTokens.hairline),
       ),
       css('.footer-inner').styles(
         maxWidth: DesignTokens.containerWidth.px,
@@ -89,7 +87,7 @@ class SiteFooter extends StatelessComponent {
           letterSpacing: Typography.trackingLabel,
         ),
         css('a').styles(
-          transition: const Transition('color', duration: Duration(milliseconds: 200)),
+          transition: const Transition('color', duration: DesignTokens.motion),
           color: DesignTokens.ink,
           fontSize: 0.85.rem,
           fontWeight: FontWeight.w500,

@@ -56,7 +56,7 @@ class App extends StatelessComponent {
       'html.js-reveal [data-reveal].is-visible',
     ).styles(opacity: 1, transform: const Transform.translate(y: Unit.zero)),
 
-    css.media(const MediaQuery.raw('(prefers-reduced-motion: reduce)'), [
+    css.media(DesignTokens.reducedMotion, [
       css('html.js-reveal [data-reveal]').styles(
         opacity: 1,
         transform: Transform.none,

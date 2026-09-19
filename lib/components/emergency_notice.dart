@@ -111,7 +111,11 @@ class EmergencyNoticeBanner extends StatelessComponent {
           margin: Margin.only(top: 4.px),
           border: const Border.all(color: DesignTokens.alert, width: Unit.pixels(1)),
           radius: BorderRadius.circular(DesignTokens.radius.px),
-          transition: const Transition('all', duration: Duration(milliseconds: 200)),
+          transition: const Transition.combine([
+            Transition('border-color', duration: DesignTokens.motion),
+            Transition('color', duration: DesignTokens.motion),
+            Transition('background-color', duration: DesignTokens.motion),
+          ]),
           alignItems: AlignItems.center,
           gap: Gap.all(8.px),
           color: DesignTokens.alert,
@@ -125,7 +129,7 @@ class EmergencyNoticeBanner extends StatelessComponent {
           backgroundColor: DesignTokens.alertHover,
         ),
         css('.emergency-link-arrow').styles(
-          transition: const Transition('transform', duration: Duration(milliseconds: 200)),
+          transition: const Transition('transform', duration: DesignTokens.motion),
         ),
         css('&:hover .emergency-link-arrow').styles(transform: const Transform.translate(x: Unit.pixels(4))),
       ]),
@@ -138,7 +142,7 @@ class EmergencyNoticeBanner extends StatelessComponent {
       ),
     ]),
 
-    css.media(const MediaQuery.raw('(prefers-reduced-motion: reduce)'), [
+    css.media(DesignTokens.reducedMotion, [
       css('.emergency .emergency-link-arrow').styles(raw: {'transition': 'none'}),
     ]),
   ];

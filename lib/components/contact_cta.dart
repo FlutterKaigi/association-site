@@ -49,7 +49,7 @@ class ContactCta extends StatelessComponent {
       css('&').styles(
         display: Display.flex,
         padding: Padding.all(40.px),
-        border: const Border.all(color: DesignTokens.border, width: Unit.pixels(1)),
+        border: DesignTokens.hairlineBox,
         radius: BorderRadius.circular(DesignTokens.radius.px),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
@@ -76,7 +76,10 @@ class ContactCta extends StatelessComponent {
           padding: Padding.symmetric(vertical: 16.px, horizontal: 28.px),
           border: const Border.all(color: DesignTokens.accent, width: Unit.pixels(1)),
           radius: BorderRadius.circular(DesignTokens.radius.px),
-          transition: const Transition('all', duration: Duration(milliseconds: 200)),
+          transition: const Transition.combine([
+            Transition('border-color', duration: DesignTokens.motion),
+            Transition('background-color', duration: DesignTokens.motion),
+          ]),
           alignItems: AlignItems.center,
           gap: Gap.all(10.px),
           color: DesignTokens.background,

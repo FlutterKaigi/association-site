@@ -78,9 +78,12 @@ class NotFoundPage extends StatelessComponent {
           display: Display.inlineFlex,
           padding: Padding.symmetric(vertical: 14.px, horizontal: 28.px),
           margin: Margin.only(top: 40.px),
-          border: const Border.all(color: DesignTokens.border, width: Unit.pixels(1)),
+          border: DesignTokens.hairlineBox,
           radius: BorderRadius.circular(DesignTokens.radius.px),
-          transition: const Transition('all', duration: Duration(milliseconds: 200)),
+          transition: const Transition.combine([
+            Transition('border-color', duration: DesignTokens.motion),
+            Transition('color', duration: DesignTokens.motion),
+          ]),
           alignItems: AlignItems.center,
           gap: Gap.all(10.px),
           color: DesignTokens.ink,
@@ -93,7 +96,7 @@ class NotFoundPage extends StatelessComponent {
           color: DesignTokens.accent,
         ),
         css('.not-found-action-arrow').styles(
-          transition: const Transition('transform', duration: Duration(milliseconds: 200)),
+          transition: const Transition('transform', duration: DesignTokens.motion),
           color: DesignTokens.inkMuted,
         ),
         css('&:hover .not-found-action-arrow').styles(

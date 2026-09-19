@@ -136,7 +136,7 @@ class Hero extends StatelessComponent {
       css('.hero .hero-scroll').styles(display: Display.none),
     ]),
 
-    css.media(const MediaQuery.raw('(prefers-reduced-motion: reduce)'), [
+    css.media(DesignTokens.reducedMotion, [
       css('.hero .hero-scroll-line').styles(animation: Animation.none),
     ]),
   ];

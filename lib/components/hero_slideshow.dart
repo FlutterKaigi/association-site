@@ -54,7 +54,7 @@ class HeroSlideshow extends StatelessComponent {
   static List<StyleRule> get styles => [
     css('.hero-slideshow', [
       css('&').styles(
-        position: Position.absolute(top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
+        position: DesignTokens.fillParent,
         overflow: Overflow.hidden,
         pointerEvents: PointerEvents.none,
         backgroundColor: DesignTokens.background,
@@ -81,7 +81,7 @@ class HeroSlideshow extends StatelessComponent {
           raw: {'animation-delay': '${index * DesignTokens.heroSlideSeconds}s'},
         ),
       css('.hero-slideshow-scrim').styles(
-        position: Position.absolute(top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
+        position: DesignTokens.fillParent,
         raw: {
           'background-image':
               // 下端。次のセクションとの境目で写真を地の色に沈める。
@@ -100,7 +100,7 @@ class HeroSlideshow extends StatelessComponent {
 
     css.keyframes('hero-slide-fade', _fadeKeyframes),
 
-    css.media(const MediaQuery.raw('(prefers-reduced-motion: reduce)'), [
+    css.media(DesignTokens.reducedMotion, [
       // 切り替えをやめて 1 枚だけ置く。
       css('.hero-slideshow img').styles(animation: Animation.none),
       css('.hero-slideshow img:first-child').styles(opacity: 1),

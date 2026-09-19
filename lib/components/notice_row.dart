@@ -33,10 +33,8 @@ class NoticeRow extends StatelessComponent {
       css('&').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 24.px),
-        border: const Border.only(
-          top: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
-        transition: const Transition('border-color', duration: Duration(milliseconds: 200)),
+        border: const Border.only(top: DesignTokens.hairline),
+        transition: const Transition('border-color', duration: DesignTokens.motion),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
         gap: Gap.all(16.px),
@@ -44,17 +42,18 @@ class NoticeRow extends StatelessComponent {
         textDecoration: TextDecoration.none,
       ),
       css('&:last-child').styles(
-        border: const Border.symmetric(
-          vertical: BorderSide.solid(color: DesignTokens.border, width: Unit.pixels(1)),
-        ),
+        border: const Border.symmetric(vertical: DesignTokens.hairline),
       ),
       css('.notice-label').styles(fontSize: 0.95.rem, fontWeight: FontWeight.w500),
       css('.notice-action').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 10.px, horizontal: 20.px),
-        border: const Border.all(color: DesignTokens.border, width: Unit.pixels(1)),
+        border: DesignTokens.hairlineBox,
         radius: BorderRadius.circular(DesignTokens.radius.px),
-        transition: const Transition('all', duration: Duration(milliseconds: 200)),
+        transition: const Transition.combine([
+          Transition('border-color', duration: DesignTokens.motion),
+          Transition('color', duration: DesignTokens.motion),
+        ]),
         alignItems: AlignItems.center,
         gap: Gap.all(8.px),
         color: DesignTokens.inkMuted,
