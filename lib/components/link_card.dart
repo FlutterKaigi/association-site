@@ -1,3 +1,4 @@
+import 'package:associate_site/constants/links.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -98,20 +99,19 @@ class LinkCard extends StatelessComponent {
 
 /// [LinkCard] の中に置くドキュメントリンク 1 行。
 class DocLink extends StatelessComponent {
-  const DocLink({required this.label, required this.href, super.key});
+  const DocLink({required this.item, super.key});
 
-  final String label;
-  final String href;
+  final LinkItem item;
 
   @override
   Component build(BuildContext context) {
     return a(
-      href: href,
+      href: item.href,
       classes: 'doc-link',
       target: Target.blank,
       attributes: const {'rel': 'noopener noreferrer'},
       [
-        span([Component.text(label)]),
+        span([Component.text(item.label)]),
         span(classes: 'doc-link-arrow', [Component.text('→')]),
       ],
     );
@@ -149,25 +149,22 @@ class DocLink extends StatelessComponent {
 
 /// [LinkCard] の中に置く SNS などのリンク 1 行。
 class SocialLink extends StatelessComponent {
-  const SocialLink({required this.icon, required this.title, required this.subtitle, required this.href, super.key});
+  const SocialLink({required this.item, super.key});
 
-  final Component icon;
-  final String title;
-  final String subtitle;
-  final String href;
+  final SocialLinkItem item;
 
   @override
   Component build(BuildContext context) {
     return a(
-      href: href,
+      href: item.href,
       classes: 'social-link',
       target: Target.blank,
       attributes: const {'rel': 'noopener noreferrer'},
       [
-        div(classes: 'social-icon', [icon]),
+        div(classes: 'social-icon', [item.icon]),
         div([
-          strong(classes: 'social-title', [Component.text(title)]),
-          span(classes: 'social-subtitle', [Component.text(subtitle)]),
+          strong(classes: 'social-title', [Component.text(item.label)]),
+          span(classes: 'social-subtitle', [Component.text(item.description)]),
         ]),
       ],
     );

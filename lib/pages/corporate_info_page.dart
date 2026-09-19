@@ -1,13 +1,15 @@
 import 'package:associate_site/components/contact_cta.dart';
 import 'package:associate_site/components/emergency_notice.dart';
 import 'package:associate_site/components/hero.dart';
-import 'package:associate_site/components/icons.dart';
 import 'package:associate_site/components/info_list.dart';
 import 'package:associate_site/components/link_card.dart';
 import 'package:associate_site/components/notice_row.dart';
 import 'package:associate_site/components/section.dart';
 import 'package:associate_site/constants/contact.dart';
 import 'package:associate_site/constants/documents.dart';
+import 'package:associate_site/constants/links.dart';
+import 'package:associate_site/constants/notices.dart';
+import 'package:associate_site/constants/organization.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
@@ -49,8 +51,8 @@ class CorporateInfoPage extends StatelessComponent {
   ];
 
   static List<InfoEntry> get _profile => [
-    const InfoEntry('名称', '一般社団法人FlutterKaigi / FlutterKaigi Association'),
-    const InfoEntry('主たる事務所', '東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609'),
+    const InfoEntry('名称', orgNameFull),
+    const InfoEntry('主たる事務所', orgAddress),
     InfoEntry.rich('目的', [
       Component.text(_purposeLead),
       ol([
@@ -66,14 +68,6 @@ class CorporateInfoPage extends StatelessComponent {
     ),
   ];
 
-  /// 貸借対照表。新しい年度が上に来るよう降順で持つ。
-  static const _notices = <(String, String)>[
-    ('2025年度(令和7年度)貸借対照表', 'https://drive.google.com/file/d/1T6cHwex1rjlLvs3Zhx3vA-_kxtAwyc_b/view?usp=sharing'),
-    ('2024年度(令和6年度)貸借対照表', 'https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=sharing'),
-    ('2023年度(令和5年度)貸借対照表', 'https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=sharing'),
-    ('2022年度(令和4年度)貸借対照表', 'https://drive.google.com/file/d/178O_RqmSR-qdaSGbv9RN6IoEuM7I6If8/view?usp=sharing'),
-  ];
-
   /// 本文中から「お問い合わせ」セクションへ飛ばす内部リンク。
   ///
   /// フォームの URL を直接張らず、同ページの窓口までスクロールさせる。
@@ -83,10 +77,10 @@ class CorporateInfoPage extends StatelessComponent {
     [Component.text('FlutterKaigi お問い合わせフォーム')],
   );
 
-  static final _legal = <InfoEntry>[
-    InfoEntry('事業者', '一般社団法人FlutterKaigi / FlutterKaigi Association'),
-    InfoEntry('代表者', '菊池 紘 / Hiroshi Kikuchi'),
-    InfoEntry('所在地', '東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609'),
+  static List<InfoEntry> get _legal => [
+    InfoEntry('事業者', orgNameFull),
+    InfoEntry('代表者', orgRepresentative),
+    InfoEntry('所在地', orgAddress),
     InfoEntry.rich('電話番号', [
       Component.text('※当社ではお電話によるお問い合わせは承っておりません。'),
       _contactFormLink,
@@ -130,7 +124,7 @@ class CorporateInfoPage extends StatelessComponent {
         subtitle: 'Public Notice',
         tinted: true,
         children: [
-          for (final (label, href) in _notices) NoticeRow(label: label, href: href),
+          for (final sheet in balanceSheets) NoticeRow(item: sheet),
         ],
       ),
 
@@ -155,7 +149,7 @@ class CorporateInfoPage extends StatelessComponent {
               subtitle: 'Documents',
               lead: '当法人が定めるポリシー・ガイドライン・規約です。いずれも日本語で公開しています。',
               children: [
-                for (final (label, href) in documents) DocLink(label: label, href: href),
+                for (final document in documents) DocLink(item: document),
               ],
             ),
             LinkCard(
@@ -163,38 +157,9 @@ class CorporateInfoPage extends StatelessComponent {
               subtitle: 'Community',
               lead:
                   'FlutterKaigiのコミュニティに参加して、最新情報を入手したり、他の開発者と交流したりしましょう。'
-                  'なお、FlutterKaigiについては、一般社団法人FlutterKaigiの協力をもって開催されます。',
+                  'なお、FlutterKaigiについては、$orgNameの協力をもって開催されます。',
               children: [
-                SocialLink(
-                  icon: Icons.connpass,
-                  title: 'connpass',
-                  subtitle: 'イベントの開催情報を確認して申し込む',
-                  href: 'https://flutterkaigi.connpass.com/',
-                ),
-                SocialLink(
-                  icon: Icons.x,
-                  title: 'X',
-                  subtitle: '@FlutterKaigiをフォローする',
-                  href: 'https://x.com/FlutterKaigi',
-                ),
-                SocialLink(
-                  icon: Icons.github,
-                  title: 'GitHub',
-                  subtitle: 'リポジトリに貢献する',
-                  href: 'https://github.com/FlutterKaigi',
-                ),
-                SocialLink(
-                  icon: Icons.medium,
-                  title: 'Medium',
-                  subtitle: 'ブログ記事を読む',
-                  href: 'https://medium.com/flutterkaigi',
-                ),
-                SocialLink(
-                  icon: Icons.youtube,
-                  title: 'YouTube',
-                  subtitle: 'セッション動画を見る',
-                  href: 'https://www.youtube.com/@flutterkaigi',
-                ),
+                for (final link in socialLinks) SocialLink(item: link),
               ],
             ),
           ]),

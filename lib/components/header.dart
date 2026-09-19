@@ -1,3 +1,5 @@
+import 'package:associate_site/constants/links.dart';
+import 'package:associate_site/constants/organization.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -14,20 +16,12 @@ class Header extends StatefulComponent {
 class HeaderState extends State<Header> {
   bool _isMenuOpen = false;
 
-  static const _navItems = <(String, String)>[
-    ('/#profile', '法人概要'),
-    ('/#notices', '電子公告'),
-    ('/#legal', '特定商取引法'),
-    ('/#links', 'リンク'),
-    ('/#contact', 'お問い合わせ'),
-  ];
-
   @override
   Component build(BuildContext context) {
     return header([
       a(href: '/', classes: 'header-logo', [
         img(src: '/images/logo.svg', alt: '', width: 32, height: 32),
-        Component.text('一般社団法人FlutterKaigi'),
+        Component.text(orgName),
       ]),
       button(
         classes: 'menu-toggle ${_isMenuOpen ? 'open' : ''}',
@@ -36,14 +30,20 @@ class HeaderState extends State<Header> {
         [div(classes: 'bar', []), div(classes: 'bar', []), div(classes: 'bar', [])],
       ),
       nav(classes: _isMenuOpen ? 'open' : '', [
-        for (final (href, label) in _navItems) _navItem(href, label),
+        for (final item in navItems) _navItem(item),
       ]),
     ]);
   }
 
-  Component _navItem(String href, String label) {
+  Component _navItem(LinkItem item) {
     return div(classes: 'nav-link-wrapper', [
-      a(href: href, events: {'click': (e) => setState(() => _isMenuOpen = false)}, [Component.text(label)]),
+      a(
+        href: item.href,
+        events: {'click': (e) => setState(() => _isMenuOpen = false)},
+        [
+          Component.text(item.label),
+        ],
+      ),
       div(classes: 'underline', []),
     ]);
   }

@@ -1,24 +1,24 @@
 import 'package:associate_site/components/icons.dart';
+import 'package:associate_site/constants/links.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// 電子公告の 1 行。年度ラベルと PDF へのゴーストボタンを左右に配置する。
 class NoticeRow extends StatelessComponent {
-  const NoticeRow({required this.label, required this.href, super.key});
+  const NoticeRow({required this.item, super.key});
 
-  final String label;
-  final String href;
+  final LinkItem item;
 
   @override
   Component build(BuildContext context) {
     return a(
-      href: href,
+      href: item.href,
       classes: 'notice-row',
       target: Target.blank,
       attributes: const {'rel': 'noopener noreferrer'},
       [
-        span(classes: 'notice-label', [Component.text(label)]),
+        span(classes: 'notice-label', [Component.text(item.label)]),
         span(classes: 'notice-action', [
           span([Component.text('PDF を開く')]),
           Icons.arrowUpRight,

@@ -1,4 +1,6 @@
 import 'package:associate_site/constants/documents.dart';
+import 'package:associate_site/constants/links.dart';
+import 'package:associate_site/constants/organization.dart';
 import 'package:associate_site/styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -7,55 +9,36 @@ import 'package:jaspr/jaspr.dart';
 class SiteFooter extends StatelessComponent {
   const SiteFooter({super.key});
 
-  /// 過去に開催したカンファレンス。新しい回が先。
-  ///
-  /// 各回のサイトは `https://<年>.flutterkaigi.jp/` に置かれている。
-  static const _eventYears = <int>[2026, 2025, 2024, 2023, 2022, 2021];
-
-  static const _links = <(String, String)>[
-    ('https://flutterkaigi.connpass.com/', 'connpass'),
-    ('https://x.com/FlutterKaigi', 'X'),
-    ('https://github.com/FlutterKaigi', 'GitHub'),
-    ('https://medium.com/flutterkaigi', 'Medium'),
-    ('https://www.youtube.com/@flutterkaigi', 'YouTube'),
-  ];
-
   @override
   Component build(BuildContext context) {
     return footer(classes: 'site-footer', [
       div(classes: 'footer-inner', [
         div(classes: 'footer-top', [
           div(classes: 'footer-brand', [
-            p(classes: 'footer-name', [Component.text('一般社団法人FlutterKaigi')]),
-            p(classes: 'footer-address', [Component.text('東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609')]),
+            p(classes: 'footer-name', [Component.text(orgName)]),
+            p(classes: 'footer-address', [Component.text(orgAddress)]),
           ]),
           div(classes: 'footer-nav', [
-            _column('Conferences', [
-              for (final year in _eventYears) _link('https://$year.flutterkaigi.jp/', 'FlutterKaigi $year'),
-            ]),
-            _column('Documents', [
-              for (final (label, href) in documents) _link(href, label),
-            ]),
-            _column('Links', [
-              for (final (href, label) in _links) _link(href, label),
-            ]),
+            _column('Conferences', conferenceLinks),
+            _column('Documents', documents),
+            _column('Links', socialLinks),
           ]),
         ]),
-        p(classes: 'footer-copyright', [Component.text('© 2021-2026 一般社団法人FlutterKaigi')]),
+        p(classes: 'footer-copyright', [Component.text('© $orgFoundedYear-${DateTime.now().year} $orgName')]),
       ]),
     ]);
   }
 
-  Component _column(String title, List<Component> children) => nav(classes: 'footer-column', [
+  Component _column(String title, List<LinkItem> items) => nav(classes: 'footer-column', [
     p(classes: 'footer-column-title', [Component.text(title)]),
-    ...children,
+    for (final item in items) _link(item),
   ]);
 
-  Component _link(String href, String label) => a(
-    href: href,
+  Component _link(LinkItem item) => a(
+    href: item.href,
     target: Target.blank,
     attributes: const {'rel': 'noopener noreferrer'},
-    [Component.text(label)],
+    [Component.text(item.label)],
   );
 
   @css
