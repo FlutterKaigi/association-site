@@ -81,9 +81,9 @@ class Section extends StatelessComponent {
         css('span').styles(
           color: DesignTokens.accent,
           fontFamily: DesignTokens.fontMono,
-          fontSize: 0.8.rem,
+          fontSize: Typography.caption,
           fontWeight: FontWeight.w600,
-          raw: {'letter-spacing': '0.1em'},
+          letterSpacing: const Unit.em(0.1),
         ),
         css(
           '.section-index-line',
@@ -92,17 +92,17 @@ class Section extends StatelessComponent {
       css('.section-title').styles(
         margin: Margin.zero,
         color: DesignTokens.ink,
-        fontSize: 1.75.rem,
+        fontSize: Typography.heading,
         fontWeight: FontWeight.w700,
-        raw: {'letter-spacing': '-0.01em'},
+        letterSpacing: Typography.trackingTight,
       ),
       css('.section-subtitle').styles(
         margin: Margin.only(top: 8.px),
         color: DesignTokens.inkMuted,
-        fontSize: 0.7.rem,
+        fontSize: Typography.eyebrowSm,
         fontWeight: FontWeight.w500,
         textTransform: TextTransform.upperCase,
-        raw: {'letter-spacing': '0.18em'},
+        letterSpacing: Typography.trackingLabel,
       ),
     ]),
 

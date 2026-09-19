@@ -82,10 +82,11 @@ class SiteFooter extends StatelessComponent {
         css('.footer-column-title').styles(
           margin: Margin.only(bottom: 4.px),
           color: DesignTokens.inkMuted,
+          // 列見出し。eyebrow より一段小さく、フッターの中でだけ使う。
           fontSize: 0.65.rem,
           fontWeight: FontWeight.w600,
           textTransform: TextTransform.upperCase,
-          raw: {'letter-spacing': '0.18em'},
+          letterSpacing: Typography.trackingLabel,
         ),
         css('a').styles(
           transition: const Transition('color', duration: Duration(milliseconds: 200)),

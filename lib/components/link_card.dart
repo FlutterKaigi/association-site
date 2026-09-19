@@ -66,10 +66,10 @@ class LinkCard extends StatelessComponent {
       css('.card-subtitle').styles(
         margin: Margin.zero,
         color: DesignTokens.accent,
-        fontSize: 0.7.rem,
+        fontSize: Typography.eyebrowSm,
         fontWeight: FontWeight.w600,
         textTransform: TextTransform.upperCase,
-        raw: {'letter-spacing': '0.18em'},
+        letterSpacing: Typography.trackingLabel,
       ),
       css('.card-title').styles(
         margin: Margin.only(top: 12.px),

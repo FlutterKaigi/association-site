@@ -55,17 +55,17 @@ class NotFoundPage extends StatelessComponent {
       // Hero やカードと同じ、ラベル用の eyebrow に寄せる。
       css('.not-found-eyebrow').styles(
         color: DesignTokens.accent,
-        fontSize: 0.75.rem,
+        fontSize: Typography.eyebrow,
         fontWeight: FontWeight.w600,
         textTransform: TextTransform.upperCase,
-        raw: {'letter-spacing': '0.18em'},
+        letterSpacing: Typography.trackingLabel,
       ),
       css('.not-found-title').styles(
         margin: Margin.only(top: 20.px),
         color: DesignTokens.ink,
-        fontSize: 1.75.rem,
+        fontSize: Typography.heading,
         fontWeight: FontWeight.w700,
-        raw: {'letter-spacing': '-0.01em'},
+        letterSpacing: Typography.trackingTight,
       ),
       css('.not-found-lead').styles(
         margin: Margin.only(top: 24.px),

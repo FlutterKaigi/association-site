@@ -61,10 +61,10 @@ class Hero extends StatelessComponent {
         margin: Margin.only(bottom: 24.px),
         // 写真の上に小さく載るので、[DesignTokens.accent] より濃い方を使う。
         color: DesignTokens.accentHover,
-        fontSize: 0.75.rem,
+        fontSize: Typography.eyebrow,
         fontWeight: FontWeight.w600,
         textTransform: TextTransform.upperCase,
-        raw: {'letter-spacing': '0.18em'},
+        letterSpacing: Typography.trackingLabel,
       ),
       css('.hero-title', [
         css('&').styles(
@@ -72,8 +72,12 @@ class Hero extends StatelessComponent {
           margin: Margin.zero,
           flexDirection: FlexDirection.column,
           color: DesignTokens.ink,
+          // 画面幅で 44px 〜 104px。ロゴタイプとして扱うので下限を大きめに取る。
+          fontSize: const Unit.expression('clamp(2.75rem, 9vw, 6.5rem)'),
           fontWeight: FontWeight.w700,
-          raw: {'font-size': 'clamp(2.75rem, 9vw, 6.5rem)', 'line-height': '1.02', 'letter-spacing': '-0.035em'},
+          // 字が大きいほど字間・行間を詰める。
+          letterSpacing: const Unit.em(-0.035),
+          lineHeight: const Unit.expression('1.02'),
         ),
         css('span:last-child').styles(color: DesignTokens.inkMuted),
       ]),
@@ -99,9 +103,9 @@ class Hero extends StatelessComponent {
           alignItems: AlignItems.center,
           gap: Gap.all(12.px),
           color: DesignTokens.inkMuted,
-          fontSize: 0.7.rem,
+          fontSize: Typography.eyebrowSm,
           textTransform: TextTransform.upperCase,
-          raw: {'letter-spacing': '0.18em'},
+          letterSpacing: Typography.trackingLabel,
         ),
         css('.hero-scroll-line').styles(
           width: 1.px,

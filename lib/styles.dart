@@ -65,4 +65,65 @@ abstract class DesignTokens {
 
   /// セクション番号などに使う等幅数字。
   static const fontMono = FontFamily.list([FontFamily('Inter'), FontFamilies.monospace]);
+
+  /// ホバーなど小さな状態変化の長さ。13 箇所で共有する。
+  /// これより長いと、マウスが離れたあとも動いていて追従感が落ちる。
+  static const motion = Duration(milliseconds: 200);
+
+  /// 動きを減らす設定。アニメーションや transform を持つルールは必ず打ち消す。
+  static const reducedMotion = MediaQuery.raw('(prefers-reduced-motion: reduce)');
+
+  /// 罫線 1 本。カード枠・定義リストの区切り・ヘッダーの下端で共有する。
+  static const hairline = BorderSide.solid(color: borderColor, width: Unit.pixels(1));
+
+  /// 全周に [hairline] を引く。
+  static const hairlineBox = Border.all(color: borderColor, width: Unit.pixels(1));
+
+  /// 親いっぱいに敷くレイヤ。置く側の要素に `position: relative` が要る。
+  ///
+  /// `Unit.zero` は `0` を吐いて `0px` にならないので使わないこと。
+  static const fillParent = Position.absolute(
+    top: Unit.pixels(0),
+    left: Unit.pixels(0),
+    right: Unit.pixels(0),
+    bottom: Unit.pixels(0),
+  );
+}
+
+/// タイポグラフィのトークン。
+///
+/// [Styles] は [Unit] を取る。`0.95.rem` は拡張 getter なので `const` にできない
+/// ため、ここでは [Unit.rem] で書く。出力される CSS は `0.95rem` で変わらない。
+///
+/// 段階を増やす前に、既にある値で代用できないか疑うこと。16px 基準で 0.05rem は
+/// 0.8px しかなく、増やしても読み手には伝わらない。1 箇所でしか使わない値は
+/// ここに足さず、そのコンポーネントにリテラルで書く。
+abstract class Typography {
+  /// ページ内の見出し。セクション見出しと 404 の見出しで共有する。
+  static const heading = Unit.rem(1.75);
+
+  /// 本文。リード文と、行の主役になるラベル。
+  static const body = Unit.rem(0.95);
+
+  /// 本文より一段小さい。定義リストの値、リンク 1 行、ボタンのラベル。
+  static const bodySm = Unit.rem(0.9);
+
+  /// さらに一段小さい。定義リストのラベル、カードのリード文、ナビゲーション。
+  static const bodyXs = Unit.rem(0.85);
+
+  /// 補足。注記、ゴーストボタン、セクション番号、リストのマーカー。
+  static const caption = Unit.rem(0.8);
+
+  /// 英字の小ラベル。ページ先頭 (Hero / 404) に置く一番大きいもの。
+  static const eyebrow = Unit.rem(0.75);
+
+  /// 英字の小ラベル。セクション見出しとカード見出しに添えるもの。
+  /// [eyebrow] より一段落として、ページ > セクションの階層を作る。
+  static const eyebrowSm = Unit.rem(0.7);
+
+  /// [eyebrow] 系の字送り。大文字だけの英字は開かないと詰まって見える。
+  static const trackingLabel = Unit.em(0.18);
+
+  /// 大きな見出しの詰め。1.75rem 以上で効かせる。
+  static const trackingTight = Unit.em(-0.01);
 }
