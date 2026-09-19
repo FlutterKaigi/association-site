@@ -70,7 +70,7 @@ class NotFoundPage extends StatelessComponent {
       css('.not-found-lead').styles(
         margin: Margin.only(top: 24.px),
         color: DesignTokens.inkMuted,
-        fontSize: 0.95.rem,
+        fontSize: Typography.body,
         lineHeight: 2.em,
       ),
       css('.not-found-action', [
@@ -87,7 +87,7 @@ class NotFoundPage extends StatelessComponent {
           alignItems: AlignItems.center,
           gap: Gap.all(10.px),
           color: DesignTokens.ink,
-          fontSize: 0.9.rem,
+          fontSize: Typography.bodySm,
           fontWeight: FontWeight.w500,
           textDecoration: TextDecoration.none,
         ),

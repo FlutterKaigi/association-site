@@ -44,7 +44,7 @@ class NoticeRow extends StatelessComponent {
       css('&:last-child').styles(
         border: const Border.symmetric(vertical: DesignTokens.hairline),
       ),
-      css('.notice-label').styles(fontSize: 0.95.rem, fontWeight: FontWeight.w500),
+      css('.notice-label').styles(fontSize: Typography.body, fontWeight: FontWeight.w500),
       css('.notice-action').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 10.px, horizontal: 20.px),
@@ -57,7 +57,7 @@ class NoticeRow extends StatelessComponent {
         alignItems: AlignItems.center,
         gap: Gap.all(8.px),
         color: DesignTokens.inkMuted,
-        fontSize: 0.8.rem,
+        fontSize: Typography.caption,
         fontWeight: FontWeight.w500,
         whiteSpace: WhiteSpace.noWrap,
       ),

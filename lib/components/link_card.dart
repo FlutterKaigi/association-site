@@ -80,7 +80,7 @@ class LinkCard extends StatelessComponent {
       css('.card-lead').styles(
         margin: Margin.only(top: 16.px, bottom: 32.px),
         color: DesignTokens.inkMuted,
-        fontSize: 0.85.rem,
+        fontSize: Typography.bodyXs,
         lineHeight: 1.9.em,
       ),
       css('.card-body').styles(
@@ -129,7 +129,7 @@ class DocLink extends StatelessComponent {
         alignItems: AlignItems.center,
         gap: Gap.all(16.px),
         color: DesignTokens.ink,
-        fontSize: 0.9.rem,
+        fontSize: Typography.bodySm,
         textDecoration: TextDecoration.none,
       ),
       css('&:hover').styles(color: DesignTokens.accent),
@@ -197,7 +197,7 @@ class SocialLink extends StatelessComponent {
         border: const Border.all(color: DesignTokens.accent, width: Unit.pixels(1)),
         color: DesignTokens.accent,
       ),
-      css('.social-title').styles(display: Display.block, fontSize: 0.9.rem, fontWeight: FontWeight.w600),
+      css('.social-title').styles(display: Display.block, fontSize: Typography.bodySm, fontWeight: FontWeight.w600),
       css('.social-subtitle').styles(color: DesignTokens.inkMuted, fontSize: 0.78.rem),
     ]),
   ];

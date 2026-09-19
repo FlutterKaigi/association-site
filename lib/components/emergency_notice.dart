@@ -94,14 +94,14 @@ class EmergencyNoticeBanner extends StatelessComponent {
       css('.emergency-icon').styles(display: Display.flex, flex: const Flex(shrink: 0)),
       css('.emergency-title').styles(
         margin: Margin.zero,
-        fontSize: 0.95.rem,
+        fontSize: Typography.body,
         fontWeight: FontWeight.w700,
         lineHeight: 1.6.em,
       ),
       css('.emergency-text').styles(
         margin: Margin.zero,
         color: DesignTokens.ink,
-        fontSize: 0.85.rem,
+        fontSize: Typography.bodyXs,
         lineHeight: 1.9.em,
       ),
       css('.emergency-link', [
@@ -119,7 +119,7 @@ class EmergencyNoticeBanner extends StatelessComponent {
           alignItems: AlignItems.center,
           gap: Gap.all(8.px),
           color: DesignTokens.alert,
-          fontSize: 0.8.rem,
+          fontSize: Typography.caption,
           fontWeight: FontWeight.w600,
           textDecoration: TextDecoration.none,
         ),

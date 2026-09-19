@@ -46,7 +46,7 @@ class InfoList extends StatelessComponent {
         padding: Padding.symmetric(vertical: 20.px),
         border: const Border.only(top: DesignTokens.hairline),
         color: DesignTokens.ink,
-        fontSize: 0.85.rem,
+        fontSize: Typography.bodyXs,
         fontWeight: FontWeight.w600,
         // 2 行になるとき「…決済方 / 法」のような割れ方をさせない。
         raw: {'text-wrap': 'balance'},
@@ -58,7 +58,7 @@ class InfoList extends StatelessComponent {
         margin: Margin.zero,
         border: const Border.only(top: DesignTokens.hairline),
         color: DesignTokens.inkMuted,
-        fontSize: 0.9.rem,
+        fontSize: Typography.bodySm,
         lineHeight: 2.em,
         // 最終行が 1 語だけ残るのを避ける。
         raw: {'text-wrap': 'pretty'},
@@ -79,7 +79,9 @@ class InfoList extends StatelessComponent {
       ),
       css('dd li').styles(padding: Padding.only(left: 4.px)),
       // 番号だけ差し色にして、条文の項目であることを示す。
-      css('dd li::marker').styles(color: DesignTokens.accent, fontSize: 0.8.rem, fontWeight: FontWeight.w600),
+      css(
+        'dd li::marker',
+      ).styles(color: DesignTokens.accent, fontSize: Typography.caption, fontWeight: FontWeight.w600),
     ]),
 
     css.media(MediaQuery.screen(maxWidth: DesignTokens.breakpointSm.px), [

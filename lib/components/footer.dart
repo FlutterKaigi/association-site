@@ -62,13 +62,13 @@ class SiteFooter extends StatelessComponent {
       css('.footer-name').styles(
         margin: Margin.zero,
         color: DesignTokens.ink,
-        fontSize: 0.95.rem,
+        fontSize: Typography.body,
         fontWeight: FontWeight.w700,
       ),
       css('.footer-address').styles(
         margin: Margin.only(top: 8.px),
         color: DesignTokens.inkMuted,
-        fontSize: 0.8.rem,
+        fontSize: Typography.caption,
       ),
       css('.footer-nav').styles(
         display: Display.flex,
@@ -89,7 +89,7 @@ class SiteFooter extends StatelessComponent {
         css('a').styles(
           transition: const Transition('color', duration: DesignTokens.motion),
           color: DesignTokens.ink,
-          fontSize: 0.85.rem,
+          fontSize: Typography.bodyXs,
           fontWeight: FontWeight.w500,
           textDecoration: TextDecoration.none,
         ),

@@ -113,7 +113,7 @@ class HeaderState extends State<Header> {
             padding: Padding.symmetric(horizontal: 14.px, vertical: 8.px),
             transition: const Transition('color', duration: DesignTokens.motion),
             color: DesignTokens.inkMuted,
-            fontSize: 0.85.rem,
+            fontSize: Typography.bodyXs,
             fontWeight: FontWeight.w500,
             textDecoration: TextDecoration.none,
           ),
