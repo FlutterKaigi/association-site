@@ -20,6 +20,9 @@ class HeroSlideshow extends StatelessComponent {
   ];
 
   /// 写真の元の寸法。予約領域を決められるように渡しておく。
+  ///
+  /// 実際の高さは 1280 と 1281 が混在しているが、`object-fit: cover` で敷くので
+  /// 描画には影響しない。予約領域の縦横比を 1 つに揃えるためこの値を使う。
   static const _slideWidth = 1920;
   static const _slideHeight = 1280;
 
