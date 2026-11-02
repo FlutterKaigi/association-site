@@ -14,6 +14,7 @@ class HeroSlideshow extends StatelessComponent {
 
   /// 映す写真。増減させれば周期も切り替えのタイミングも追従する。
   static const _slides = [
+    '/images/hero/group-photo-2026.webp',
     '/images/hero/group-photo-2025.webp',
     '/images/hero/group-photo-2024.webp',
     '/images/hero/group-photo-2023.webp',
@@ -21,7 +22,7 @@ class HeroSlideshow extends StatelessComponent {
 
   /// 写真の元の寸法。予約領域を決められるように渡しておく。
   ///
-  /// 実際の高さは 1280 と 1281 が混在しているが、`object-fit: cover` で敷くので
+  /// 実際の高さは 1195 から 1281 まで混在しているが、`object-fit: cover` で敷くので
   /// 描画には影響しない。予約領域の縦横比を 1 つに揃えるためこの値を使う。
   static const _slideWidth = 1920;
   static const _slideHeight = 1280;
