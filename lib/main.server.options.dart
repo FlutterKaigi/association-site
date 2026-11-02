@@ -41,6 +41,7 @@ ServerOptions get defaultServerOptions => ServerOptions(
   clientId: 'main.client.dart.js',
   clients: {_header.Header: ClientTarget<_header.Header>('header')},
   styles: () => [
+    ..._app.App.styles,
     ..._contact_cta.ContactCta.styles,
     ..._emergency_notice.EmergencyNoticeBanner.styles,
     ..._footer.Footer.styles,
@@ -56,6 +57,5 @@ ServerOptions get defaultServerOptions => ServerOptions(
     ..._notice_row.NoticeRow.styles,
     ..._section.Section.styles,
     ..._not_found_page.NotFoundPage.styles,
-    ..._app.App.styles,
   ],
 );

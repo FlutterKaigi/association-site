@@ -15,7 +15,7 @@
 
 [![Deploy](https://github.com/FlutterKaigi/association-site/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/FlutterKaigi/association-site/actions/workflows/gh-pages.yml)
 [![Dart](https://img.shields.io/badge/Dart-%5E3.10.0-0175C2?logo=dart&logoColor=white)](https://dart.dev)
-[![Jaspr](https://img.shields.io/badge/Jaspr-0.22.4-1A6DFF)](https://jaspr.site)
+[![Jaspr](https://img.shields.io/badge/Jaspr-0.23.5-1A6DFF)](https://jaspr.site)
 [![Static site](https://img.shields.io/badge/mode-static-6B7280)](https://docs.jaspr.site/get_started/modes)
 
 </div>
