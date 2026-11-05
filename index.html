@@ -1,199 +1,1279 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <base href="/"/>
     <meta charset="utf-8"/>
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Roboto);
-      html, body {
+      @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap);
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 96px;
+      }
+      body {
         width: 100%;
         min-height: 100vh;
         padding: 0;
         margin: 0;
-        font-family: 'Roboto', sans-serif;
+        color: #101114;
+        font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        font-size: 16px;
+        line-height: 1.8em;
+        background-color: #FFFFFF;
+        font-feature-settings: "palt";
+        line-break: strict;
+        word-break: normal;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
-      h1 {
-        margin: unset;
-        font-size: 4rem;
+      h1, h2, h3, p {
+        margin: 0;
+      }
+      img, svg {
+        display: block;
+        max-width: 100%;
       }
     </style>
+    <link href="https://association.flutterkaigi.jp/" rel="canonical"/>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        if (!('IntersectionObserver' in window)) return;
+        root.classList.add('js-reveal');
+        var observe = function () {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            });
+          }, { rootMargin: '0px 0px -10% 0px' });
+          document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', observe);
+        } else {
+          observe();
+        }
+      })();
+      
+    </script>
     <!--$-->
-    <title>associate_site</title>
+    <title>一般社団法人FlutterKaigi | FlutterKaigi Association</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="一般社団法人FlutterKaigiの法人概要、電子公告、特定商取引法に基づく表記、および各種ドキュメントをご案内します。"/>
+    <meta name="og:title" content="一般社団法人FlutterKaigi | FlutterKaigi Association"/>
+    <meta name="og:description" content="一般社団法人FlutterKaigiの法人概要、電子公告、特定商取引法に基づく表記、および各種ドキュメントをご案内します。"/>
+    <meta name="og:type" content="website"/>
+    <meta name="og:url" content="https://association.flutterkaigi.jp/"/>
+    <meta name="og:image" content="https://association.flutterkaigi.jp/images/logo.svg"/>
+    <meta name="twitter:card" content="summary"/>
     <!--/-->
     <script src="main.client.dart.js" defer></script>
     <style>
-      html, body {
-        padding: 0;
-        margin: 0;
-        color: #12005E;
-        font-family: 'sans-serif';
-        background-color: #F8F7FF;
+      .app-container {
+        display: flex;
+        min-height: 100svh;
+        flex-direction: column;
       }
-      .content-wrapper {
-        max-width: 1000px;
-        padding: 80px 24px;
+      main {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+      html.js-reveal [data-reveal] {
+        opacity: 0.0;
+        transition: opacity 600ms ease-out, transform 600ms ease-out;
+        transform: translateY(16px);
+      }
+      html.js-reveal [data-reveal].is-visible {
+        opacity: 1.0;
+        transform: translateY(0);
+      }
+      .link-arrow {
+        transition: transform 200ms;
+      }
+      a:hover .link-arrow {
+        transform: translateX(4px);
+      }
+      a:hover .link-arrow-back {
+        transform: translateX(-4px);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html.js-reveal [data-reveal] {
+          opacity: 1.0;
+          transform: none;
+          transition: none;
+        }
+        .link-arrow {
+          transition: none;
+        }
+      }
+      ::selection {
+        color: #FFFFFF;
+        background-color: #027DFD;
+      }
+      .contact {
+        display: flex;
+        padding: 40px;
+        border: solid #E6E8EC 1px;
+        border-radius: 4px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+        background-color: #F5F6F8;
+      }
+      .contact .contact-lead {
+        max-width: 40rem;
+        margin: 0;
+        color: #101114;
+        font-size: 0.95rem;
+        line-height: 1.9em;
+      }
+      .contact .contact-note {
+        margin-top: 12px;
+        color: #6B7280;
+        font-size: 0.8rem;
+        line-height: 1.8em;
+      }
+      .contact .contact-button {
+        display: flex;
+        padding: 16px 28px;
+        border: solid #027DFD 1px;
+        border-radius: 4px;
+        transition: border-color 200ms, background-color 200ms;
+        align-items: center;
+        gap: 10px;
+        color: #FFFFFF;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #027DFD;
+      }
+      .contact .contact-button:hover {
+        border: solid #0057B8 1px;
+        background-color: #0057B8;
+      }
+      @media screen and (max-width: 900px) {
+        .contact {
+          flex-direction: column;
+          align-items: start;
+          gap: 28px;
+        }
+        .contact .contact-button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .contact {
+          padding: 28px;
+        }
+      }
+      .emergency {
+        display: flex;
+        max-width: 46rem;
+        padding: 20px 24px;
+        margin-top: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid #FDA29B 1px;
+        border-radius: 4px;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+        background-color: #FEF3F2;
+        border-left: 3px solid #D92D20;
+      }
+      .emergency .emergency-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #D92D20;
+      }
+      .emergency .emergency-icon {
+        display: flex;
+        flex-shrink: 0;
+      }
+      .emergency .emergency-title {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.6em;
+      }
+      .emergency .emergency-text {
+        margin: 0;
+        color: #101114;
+        font-size: 0.85rem;
+        line-height: 1.9em;
+      }
+      .emergency .emergency-link {
+        display: flex;
+        padding: 8px 16px;
+        margin-top: 4px;
+        border: solid #D92D20 1px;
+        border-radius: 4px;
+        transition: border-color 200ms, color 200ms, background-color 200ms;
+        align-items: center;
+        gap: 8px;
+        color: #D92D20;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .emergency .emergency-link:hover {
+        border: solid #B42318 1px;
+        color: #FFFFFF;
+        background-color: #B42318;
+      }
+      @media screen and (max-width: 640px) {
+        .emergency {
+          padding: 18px 20px;
+          margin-top: 36px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .site-footer {
+        padding: 80px 0px;
+        border-top-style: solid;
+        border-top-color: #E6E8EC;
+        border-top-width: 1px;
+      }
+      .site-footer .footer-inner {
+        max-width: 1120px;
+        padding-left: 24px;
+        padding-right: 24px;
         margin-left: auto;
         margin-right: auto;
       }
-      .info-section {
-        margin-bottom: 48px;
+      .site-footer .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 48px;
       }
-      h3 {
-        margin-bottom: 12px;
-        font-size: 1.15rem;
+      .site-footer .footer-name {
+        margin: 0;
+        color: #101114;
+        font-size: 0.95rem;
         font-weight: 700;
       }
-      .sub-label {
-        display: block;
-        margin-top: 24px;
-        color: #6200EA;
-        font-weight: bold;
+      .site-footer .footer-address {
+        margin-top: 8px;
+        color: #6B7280;
+        font-size: 0.8rem;
       }
-      .announcement-row {
+      .site-footer .footer-nav {
         display: flex;
-        margin-top: 20px;
+        flex-wrap: wrap;
+        gap: 56px;
+      }
+      .site-footer .footer-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .site-footer .footer-column .footer-column-title {
+        margin-bottom: 4px;
+        color: #6B7280;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .site-footer .footer-column a {
+        transition: color 200ms;
+        color: #101114;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        color: #027DFD;
+      }
+      .site-footer .footer-copyright {
+        margin-top: 64px;
+        color: #6B7280;
+        font-size: 0.75rem;
+      }
+      @media screen and (max-width: 900px) {
+        .site-footer .footer-top {
+          flex-direction: column;
+          gap: 48px;
+        }
+        .site-footer .footer-nav {
+          gap: 48px;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .site-footer {
+          padding: 56px 0px;
+        }
+        .site-footer .footer-inner {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .site-footer .footer-nav {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .site-footer .footer-copyright {
+          margin-top: 48px;
+        }
+      }
+      .grid-backdrop {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .grid-backdrop > div {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+      }
+      .grid-backdrop .grid-backdrop-glow {
+        background-image: radial-gradient(58% 52% at 78% 16%, rgba(2, 125, 253, 0.08), rgba(2, 125, 253, 0) 70%);
+      }
+      .grid-backdrop .grid-backdrop-lines {
+        background-image: linear-gradient(to right, #EDEFF2 1px, transparent 1px),linear-gradient(to bottom, #EDEFF2 1px, transparent 1px);
+        background-size: 80px 80px;
+        -webkit-mask-image: radial-gradient(125% 100% at 50% 0%, #000 28%, transparent 76%);
+        mask-image: radial-gradient(125% 100% at 50% 0%, #000 28%, transparent 76%);
+      }
+      header {
+        display: flex;
+        position: sticky;
+        top: 0px;
+        z-index: 1000;
+        height: 72px;
+        padding-left: 24px;
+        padding-right: 24px;
+        border-bottom-style: solid;
+        border-bottom-color: #E6E8EC;
+        border-bottom-width: 1px;
         justify-content: space-between;
         align-items: center;
+        background-color: #FFFFFF;
       }
-      .pdf-button {
-        padding: 10px 28px;
-        border-radius: 2px;
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-        background-color: #FF5242;
-      }
-      .cards-grid {
-        display: grid;
-        margin-top: 40px;
-        gap: 24px;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      }
-      .card {
+      header .header-logo {
         display: flex;
-        padding: 32px;
-        border: solid rgba(0, 0, 0, 0.05) 1px;
-        border-radius: 24px;
+        align-items: center;
+        gap: 10px;
+        color: #101114;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+      }
+      header .header-logo img {
+        border-radius: 50%;
+      }
+      header .menu-toggle {
+        display: none;
+        position: relative;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: none;
+        outline: unset;
+        cursor: pointer;
         flex-direction: column;
-        gap: 16px;
-        background-color: rgba(255, 255, 255, 0.6);
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background-color: transparent;
+      }
+      header .menu-toggle .bar {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        transition: transform 300ms, opacity 300ms;
+        background-color: #101114;
+      }
+      header nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      header nav .nav-link-wrapper {
+        position: relative;
+      }
+      header nav .nav-link-wrapper a {
+        display: block;
+        padding: 8px 14px;
+        transition: color 200ms;
+        color: #6B7280;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      header nav .nav-link-wrapper:hover a {
+        color: #101114;
+      }
+      header nav .nav-link-wrapper .underline {
+        position: absolute;
+        left: 14px;
+        bottom: 4px;
+        right: 14px;
+        height: 1px;
+        transition: transform 250ms;
+        transform: scale(0);
+        background-color: #027DFD;
+      }
+      header nav .nav-link-wrapper:hover .underline {
+        transform: scale(1);
+      }
+      @media screen and (max-width: 900px) {
+        header .menu-toggle {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        header nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0px;
+          right: 0px;
+          padding: 16px 24px;
+          border-bottom-style: solid;
+          border-bottom-color: #E6E8EC;
+          border-bottom-width: 1px;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 4px;
+          background-color: #FFFFFF;
+        }
+        header nav.open {
+          display: flex;
+        }
+        header .nav-link-wrapper a {
+          padding: 12px 0px;
+        }
+        header .menu-toggle.open .bar:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        header .menu-toggle.open .bar:nth-child(2) {
+          opacity: 0.0;
+        }
+        header .menu-toggle.open .bar:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+      .hero {
+        display: flex;
+        position: relative;
+        min-height: calc(100svh - 72px);
+        padding: 96px 24px;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #FFFFFF;
+      }
+      .hero .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero .hero-eyebrow {
+        margin-bottom: 24px;
+        color: #0057B8;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .hero .hero-title {
+        display: flex;
+        margin: 0;
+        flex-direction: column;
+        color: #101114;
+        font-size: clamp(2.75rem, 9vw, 6.5rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.02;
+      }
+      .hero .hero-title span:last-child {
+        color: #6B7280;
+      }
+      .hero .hero-rule {
+        width: 64px;
+        height: 2px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: #027DFD;
+      }
+      .hero .hero-lead {
+        max-width: 46rem;
+        margin: 0;
+        color: #5A6270;
+        font-size: 1rem;
+        line-height: 2em;
+      }
+      .hero .hero-scroll {
+        display: flex;
+        position: absolute;
+        bottom: 32px;
+        right: 24px;
+        z-index: 1;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        color: #6B7280;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .hero .hero-scroll .hero-scroll-line {
+        width: 1px;
+        height: 56px;
+        animation: 1800ms hero-scroll-hint;
+        background-color: #E6E8EC;
+        animation-iteration-count: infinite;
+        transform-origin: top;
+      }
+      @keyframes hero-scroll-hint {
+        0% {
+          background-color: #027DFD;
+          transform: scaleY(0);
+        }
+        50% {
+          background-color: #027DFD;
+          transform: scaleY(1);
+        }
+        100% {
+          background-color: #E6E8EC;
+          transform: scaleY(0);
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .hero {
+          padding: 64px 20px;
+        }
+        .hero .hero-rule {
+          margin-top: 28px;
+          margin-bottom: 28px;
+        }
+        .hero .hero-scroll {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero .hero-scroll-line {
+          animation: none;
+        }
+      }
+      .hero-slideshow {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        overflow: hidden;
+        pointer-events: none;
+        background-color: #FFFFFF;
+      }
+      .hero-slideshow img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.0;
+        animation: 32000ms hero-slide-fade;
+        transform: scale(1.12);
+        animation-iteration-count: infinite;
+        object-fit: cover;
+        filter: blur(2px);
+      }
+      .hero-slideshow img:nth-child(2) {
+        animation-delay: 8s;
+      }
+      .hero-slideshow img:nth-child(3) {
+        animation-delay: 16s;
+      }
+      .hero-slideshow img:nth-child(4) {
+        animation-delay: 24s;
+      }
+      .hero-slideshow .hero-slideshow-scrim {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.90) 84%, #FFFFFF 100%),linear-gradient(105deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.90) 55%, rgba(255, 255, 255, 0.74) 100%);
+      }
+      @keyframes hero-slide-fade {
+        0% {
+          opacity: 0.0;
+        }
+        3.750% {
+          opacity: 1.0;
+        }
+        25.000% {
+          opacity: 1.0;
+        }
+        28.750% {
+          opacity: 0.0;
+        }
+        100% {
+          opacity: 0.0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-slideshow img {
+          animation: none;
+        }
+        .hero-slideshow img:first-child {
+          opacity: 1.0;
+        }
+      }
+      .info-list {
+        display: grid;
+        margin: 0;
+        align-items: baseline;
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+      .info-list dt {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top-style: solid;
+        border-top-color: #E6E8EC;
+        border-top-width: 1px;
+        color: #101114;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+      .info-list dd {
+        max-width: 42rem;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 0;
+        border-top-style: solid;
+        border-top-color: #E6E8EC;
+        border-top-width: 1px;
+        color: #6B7280;
+        font-size: 0.9rem;
+        line-height: 2em;
+        text-wrap: pretty;
+      }
+      .info-list dd .info-list-link {
+        transition: color 200ms;
+        color: #027DFD;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+      .info-list dd .info-list-link:hover {
+        color: #0057B8;
+      }
+      .info-list dd ol {
+        padding-left: 1.6em;
+        margin-top: 12px;
+        margin-bottom: 0px;
+      }
+      .info-list dd li {
+        padding-left: 4px;
+      }
+      .info-list dd li::marker {
+        color: #027DFD;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      @media screen and (max-width: 640px) {
+        .info-list {
+          grid-template-columns: 1fr;
+        }
+        .info-list dt {
+          padding-top: 18px;
+          line-height: 1.6em;
+        }
+        .info-list dd {
+          padding-top: 2px;
+          padding-bottom: 18px;
+          border: none;
+        }
       }
       .doc-link {
         display: flex;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        border-bottom-style: solid;
+        border-bottom-color: #E6E8EC;
+        border-bottom-width: 1px;
+        transition: color 200ms;
         justify-content: space-between;
-        color: #007AFF;
-        text-decoration: none;
-      }
-      .social-tile {
-        display: flex;
-        padding: 16px;
-        border-radius: 16px;
         align-items: center;
-        color: #12005E;
+        gap: 16px;
+        color: #101114;
+        font-size: 0.9rem;
         text-decoration: none;
-        background-color: #E3F2FD;
       }
-      .tile-icon {
+      .doc-link:hover {
+        color: #027DFD;
+      }
+      .doc-link .link-arrow {
+        color: #6B7280;
+      }
+      .doc-link:hover .link-arrow {
+        color: #027DFD;
+      }
+      .card {
+        display: grid;
+        padding: 40px;
+        border: solid #E6E8EC 1px;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        grid-row: span 4;
+        grid-template-rows: subgrid;
+        row-gap: 0;
+      }
+      .card .card-subtitle {
+        margin: 0;
+        color: #027DFD;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .card .card-title {
+        margin-top: 12px;
+        color: #101114;
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+      .card .card-lead {
+        margin-top: 16px;
+        margin-bottom: 32px;
+        color: #6B7280;
+        font-size: 0.85rem;
+        line-height: 1.9em;
+      }
+      .card .card-body {
+        display: flex;
+        flex-direction: column;
+        align-self: start;
+      }
+      @media screen and (max-width: 640px) {
+        .card {
+          padding: 28px;
+        }
+      }
+      .card-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+      }
+      .social-link {
+        display: flex;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        border-bottom-style: solid;
+        border-bottom-color: #E6E8EC;
+        border-bottom-width: 1px;
+        align-items: center;
+        gap: 16px;
+        color: #101114;
+        text-decoration: none;
+      }
+      .social-link .social-icon {
         display: flex;
         width: 40px;
         height: 40px;
-        margin-right: 16px;
+        border: solid #E6E8EC 1px;
         border-radius: 50%;
+        transition: border-color 200ms, color 200ms;
         justify-content: center;
         align-items: center;
-        background-color: #BBDEFB;
       }
-      .tile-title {
+      .social-link:hover .social-icon {
+        border: solid #027DFD 1px;
+        color: #027DFD;
+      }
+      .social-link .social-title {
         display: block;
-        font-weight: bold;
+        font-size: 0.9rem;
+        font-weight: 600;
       }
-      .tile-sub {
-        color: #7E57C2;
-        font-size: 0.85rem;
+      .social-link .social-subtitle {
+        color: #6B7280;
+        font-size: 0.78rem;
+      }
+      .notice-row {
+        display: flex;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        border-top-style: solid;
+        border-top-color: #E6E8EC;
+        border-top-width: 1px;
+        transition: border-color 200ms;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        color: #101114;
+        text-decoration: none;
+      }
+      .notice-row:last-child {
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-top-color: #E6E8EC;
+        border-bottom-color: #E6E8EC;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+      }
+      .notice-row .notice-label {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .notice-row .notice-action {
+        display: flex;
+        padding: 10px 20px;
+        border: solid #E6E8EC 1px;
+        border-radius: 4px;
+        transition: border-color 200ms, color 200ms;
+        align-items: center;
+        gap: 8px;
+        color: #6B7280;
+        font-size: 0.8rem;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .notice-row:hover .notice-action {
+        border: solid #027DFD 1px;
+        color: #027DFD;
+      }
+      @media screen and (max-width: 640px) {
+        .notice-row {
+          flex-direction: column;
+          align-items: start;
+          gap: 12px;
+        }
+      }
+      .section {
+        padding: 120px 0px;
+      }
+      .section.section-tinted {
+        background-color: #F5F6F8;
+      }
+      .section .section-inner {
+        max-width: 1120px;
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .section .section-head {
+        display: grid;
+        margin-bottom: 48px;
+        align-items: baseline;
+        gap: 32px;
+        grid-template-columns: 200px 1fr;
+      }
+      .section .section-index {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .section .section-index span {
+        color: #027DFD;
+        font-family: 'Inter', monospace;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+      }
+      .section .section-index .section-index-line {
+        height: 1px;
+        flex-grow: 1;
+        background-color: #E6E8EC;
+      }
+      .section .section-title {
+        margin: 0;
+        color: #101114;
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .section .section-subtitle {
+        margin-top: 8px;
+        color: #6B7280;
+        font-size: 0.7rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      @media screen and (max-width: 900px) {
+        .section {
+          padding: 72px 0px;
+        }
+        .section .section-head {
+          margin-bottom: 32px;
+          gap: 16px;
+          grid-template-columns: 1fr;
+        }
+        .section .section-index {
+          max-width: 200px;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .section {
+          padding: 56px 0px;
+        }
+        .section .section-inner {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .section .section-title {
+          font-size: 1.4rem;
+        }
+      }
+      .not-found {
+        display: flex;
+        padding: 80px 24px;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        background-color: #FFFFFF;
+      }
+      .not-found .not-found-inner {
+        width: 100%;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .not-found .not-found-eyebrow {
+        color: #027DFD;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .not-found .not-found-title {
+        margin-top: 20px;
+        color: #101114;
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .not-found .not-found-lead {
+        margin-top: 24px;
+        color: #6B7280;
+        font-size: 0.95rem;
+        line-height: 2em;
+      }
+      .not-found .not-found-action {
+        display: inline-flex;
+        padding: 14px 28px;
+        margin-top: 40px;
+        border: solid #E6E8EC 1px;
+        border-radius: 4px;
+        transition: border-color 200ms, color 200ms;
+        align-items: center;
+        gap: 10px;
+        color: #101114;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .not-found .not-found-action:hover {
+        border: solid #027DFD 1px;
+        color: #027DFD;
+      }
+      .not-found .not-found-action .link-arrow {
+        color: #6B7280;
+      }
+      .not-found .not-found-action:hover .link-arrow {
+        color: #027DFD;
+      }
+      @media screen and (max-width: 640px) {
+        .not-found {
+          padding: 64px 20px;
+        }
+        .not-found .not-found-title {
+          font-size: 1.25rem;
+        }
       }
     </style>
   </head>
   <body>
     <div class="app-container">
+      <!--@header-->
+      <header>
+        <a class="header-logo" href="/"><img alt width="32" height="32" src="/images/logo.svg"/>一般社団法人FlutterKaigi</a>
+        <button class="menu-toggle " aria-label="メニュー" aria-expanded="false"><div class="bar"></div><div class="bar"></div><div class="bar"></div></button>
+        <nav>
+          <div class="nav-link-wrapper"><a href="/#profile">法人概要</a><div class="underline"></div></div>
+          <div class="nav-link-wrapper"><a href="/#notices">電子公告</a><div class="underline"></div></div>
+          <div class="nav-link-wrapper"><a href="/#legal">特定商取引法</a><div class="underline"></div></div>
+          <div class="nav-link-wrapper"><a href="/#links">リンク</a><div class="underline"></div></div>
+          <div class="nav-link-wrapper"><a href="/#contact">お問い合わせ</a><div class="underline"></div></div>
+        </nav>
+      </header>
+      <!--/@header-->
       <main>
-        <div class="content-wrapper">
-          <div class="info-section"><h3>名称</h3><p>一般社団法人FlutterKaigi / FlutterKaigi Association</p></div>
-          <div class="info-section"><h3>主たる事務所</h3><p>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</p></div>
-          <div class="info-section">
-            <h3>法人の公告方法</h3>
-            <p>当法人の公告は、電子公告により行う</p>
-            <div class="announcement-row">
-              <span>2022年度(令和4年度)貸借対照表</span>
-              <a class="pdf-button" href="https://drive.google.com/file/d/178O_RqmSR-qdaSGbv9RN6IoEuM7I6If8/view?usp=sharing">PDF を開く</a>
+        <section id="top" class="hero">
+          <div class="hero-slideshow">
+            <img aria-hidden="true" decoding="async" fetchpriority="high" alt width="1920" height="1280" src="/images/hero/group-photo-2026.webp"/>
+            <img aria-hidden="true" decoding="async" fetchpriority="low" alt width="1920" height="1280" src="/images/hero/group-photo-2025.webp"/>
+            <img aria-hidden="true" decoding="async" fetchpriority="low" alt width="1920" height="1280" src="/images/hero/group-photo-2024.webp"/>
+            <img aria-hidden="true" decoding="async" fetchpriority="low" alt width="1920" height="1280" src="/images/hero/group-photo-2023.webp"/>
+            <div class="hero-slideshow-scrim"></div>
+          </div>
+          <div class="grid-backdrop"><div class="grid-backdrop-glow"></div><div class="grid-backdrop-lines"></div></div>
+          <div class="hero-inner">
+            <p class="hero-eyebrow">FlutterKaigi Association</p>
+            <h1 class="hero-title"><span>FlutterKaigi</span><span>Association</span></h1>
+            <div class="hero-rule"></div>
+            <p class="hero-lead">一般社団法人FlutterKaigi<br/>日本の Flutter コミュニティを支え、カンファレンスを継続的に開催するための法人です。</p>
+          </div>
+          <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+        </section>
+        <section id="profile" class="section">
+          <div class="section-inner" data-reveal>
+            <div class="section-head">
+              <div class="section-index"><span>01</span><div class="section-index-line"></div></div>
+              <div><h2 class="section-title">法人概要</h2><p class="section-subtitle">Corporate Profile</p></div>
             </div>
-            <div class="announcement-row">
-              <span>2023年度(令和5年度)貸借対照表</span>
-              <a class="pdf-button" href="https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=sharing">PDF を開く</a>
-            </div>
-            <div class="announcement-row">
-              <span>2024年度(令和6年度)貸借対照表</span>
-              <a class="pdf-button" href="https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=sharing">PDF を開く</a>
-            </div>
-            <div class="announcement-row">
-              <span>2025年度(令和7年度)貸借対照表</span>
-              <a class="pdf-button" href="https://drive.google.com/file/d/1T6cHwex1rjlLvs3Zhx3vA-_kxtAwyc_b/view?usp=sharing">PDF を開く</a>
+            <div class="section-body">
+              <dl class="info-list">
+                <dt>名称</dt>
+                <dd>一般社団法人FlutterKaigi / FlutterKaigi Association</dd>
+                <dt>主たる事務所</dt>
+                <dd>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</dd>
+                <dt>目的</dt>
+                <dd>
+                  当法人は、エンジニアの技術共有およびコミュニケーションを支援、充実することを目的とし、その目的に資するため、次の事業を行う。
+                  <ol>
+                    <li>エンジニアを対象とした催しの開催および運営</li>
+                    <li>エンジニアの育成の推進を図る活動</li>
+                    <li>技術共有、コミュニケーションを目的とした催しの支援および人材育成</li>
+                    <li>前各号に附帯又は関連する一切の事業</li>
+                  </ol>
+                </dd>
+                <dt>法人の公告方法</dt>
+                <dd>当法人の公告は、電子公告により行う。ただし、事故その他やむを得ない事由によって電子公告による公告をすることができない場合は、官報に掲載する方法により行う。</dd>
+              </dl>
             </div>
           </div>
-          <div class="info-section">
-            <h3>特定商取引法に基づく表記</h3>
-            <strong class="sub-label">事業者</strong>
-            <p>一般社団法人FlutterKaigi / FlutterKaigi Association</p>
-            <strong class="sub-label">代表者</strong>
-            <p>菊池紘 / Hiroshi Kikuchi</p>
-            <strong class="sub-label">所在地</strong>
-            <p>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</p>
-            <strong class="sub-label">電話番号</strong>
-            <p>※当社ではお電話によるお問い合わせは承っておりません。FlutterKaigi お問い合わせフォーム までご連絡くださいますようお願いいたします。</p>
-            <strong class="sub-label">販売価格</strong>
-            <p>各商品に表記された価格に準じます。</p>
-            <strong class="sub-label">サービス代金以外の料金</strong>
-            <p>注文手数料（コンビニ、ATM 決済の場合）</p>
-            <strong class="sub-label">代金の支払い時期および決済方法</strong>
-            <p>クレジットカード（即時）、コンビニ決済（支払期限まで）、ATM 決済（支払期限まで） ※予定が変更される場合があります。</p>
-            <strong class="sub-label">サービスの提供時期</strong>
-            <p>FlutterKaigiの開催日</p>
-            <strong class="sub-label">返品・返金</strong>
-            <p>
-              チケット購入から 50 日未満、かつ決済方法がクレジットカードの場合のみ、チケットのキャンセル・返金が可能です。コンビニ、ATM 決済ではキャンセル・返金できませんので、あらかじめご了承ください。キャンセルをご希望の場合は、購入後に届く購入完了メールに記載されている購入者のお名前、注文番号を添えて、FlutterKaigi お問い合わせフォームよりご連絡ください。
-            </p>
-          </div>
-          <div class="cards-grid">
-            <div class="card">
-              <h3>📄 ドキュメント</h3>
-              <p>日本語で書かれた以下のドキュメントをご覧いただけます。</p>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Code-of-Conduct.ja">行動規範<span>→</span></a>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Privacy-Policy.ja">プライバシーポリシー<span>→</span></a>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Exclusion-of-Anti-Social-Forces.ja">反社会的勢力排除ポリシー<span>→</span></a>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Event-Guidelines.ja">関連イベントのガイドライン<span>→</span></a>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Terms-for-Join.ja">イベント参加規約<span>→</span></a>
-              <a class="doc-link" href="https://docs.flutterkaigi.jp/Logo-Guidelines.ja">ロゴ使用ガイドライン<span>→</span></a>
+        </section>
+        <section id="notices" class="section section-tinted">
+          <div class="section-inner" data-reveal>
+            <div class="section-head">
+              <div class="section-index"><span>02</span><div class="section-index-line"></div></div>
+              <div><h2 class="section-title">電子公告</h2><p class="section-subtitle">Public Notice</p></div>
             </div>
-            <div class="card">
-              <h3>👥 コミュニティに参加する</h3>
-              <p>
-                FlutterKaigiのコミュニティに参加して、最新情報を入手したり、他の開発者と交流したりしましょう。なお、FlutterKaigiについては、一般社団法人FlutterKaigiの協力をもって開催されます。
-              </p>
-              <a class="social-tile" href="https://x.com/FlutterKaigi">
-                <div class="tile-icon">🐦</div>
-                <div><strong class="tile-title">X</strong><span class="tile-sub">@FlutterKaigiをフォロー</span></div>
+            <div class="section-body">
+              <a class="notice-row" rel="noopener noreferrer" href="https://drive.google.com/file/d/1T6cHwex1rjlLvs3Zhx3vA-_kxtAwyc_b/view?usp=sharing" target="_blank">
+                <span class="notice-label">2025年度(令和7年度)貸借対照表</span>
+                <span class="notice-action"><span>PDF を開く</span><svg aria-hidden="true" viewBox="0 0 24 24" width="16px" height="16px"><path d="M7 17L17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></span>
               </a>
-              <a class="social-tile" href="https://github.com/FlutterKaigi">
-                <div class="tile-icon">📂</div>
-                <div><strong class="tile-title">GitHub</strong><span class="tile-sub">FlutterKaigiリポジトリに貢献する</span></div>
+              <a class="notice-row" rel="noopener noreferrer" href="https://drive.google.com/file/d/1hKGPkBDZ5224OMVJrYeTyMwx0MQvv88K/view?usp=sharing" target="_blank">
+                <span class="notice-label">2024年度(令和6年度)貸借対照表</span>
+                <span class="notice-action"><span>PDF を開く</span><svg aria-hidden="true" viewBox="0 0 24 24" width="16px" height="16px"><path d="M7 17L17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></span>
+              </a>
+              <a class="notice-row" rel="noopener noreferrer" href="https://drive.google.com/file/d/1bNfLuma7ZMzeX_wOzu5GCvfG8RMASXXD/view?usp=sharing" target="_blank">
+                <span class="notice-label">2023年度(令和5年度)貸借対照表</span>
+                <span class="notice-action"><span>PDF を開く</span><svg aria-hidden="true" viewBox="0 0 24 24" width="16px" height="16px"><path d="M7 17L17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></span>
+              </a>
+              <a class="notice-row" rel="noopener noreferrer" href="https://drive.google.com/file/d/178O_RqmSR-qdaSGbv9RN6IoEuM7I6If8/view?usp=sharing" target="_blank">
+                <span class="notice-label">2022年度(令和4年度)貸借対照表</span>
+                <span class="notice-action"><span>PDF を開く</span><svg aria-hidden="true" viewBox="0 0 24 24" width="16px" height="16px"><path d="M7 17L17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></span>
               </a>
             </div>
           </div>
-        </div>
+        </section>
+        <section id="legal" class="section">
+          <div class="section-inner" data-reveal>
+            <div class="section-head">
+              <div class="section-index"><span>03</span><div class="section-index-line"></div></div>
+              <div><h2 class="section-title">特定商取引法に基づく表記</h2><p class="section-subtitle">Legal Notice</p></div>
+            </div>
+            <div class="section-body">
+              <dl class="info-list">
+                <dt>事業者</dt>
+                <dd>一般社団法人FlutterKaigi / FlutterKaigi Association</dd>
+                <dt>代表者</dt>
+                <dd>菊池 紘 / Hiroshi Kikuchi</dd>
+                <dt>所在地</dt>
+                <dd>東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</dd>
+                <dt>電話番号</dt>
+                <dd>
+                  ※当社ではお電話によるお問い合わせは承っておりません。
+                  <a class="info-list-link" href="#contact">FlutterKaigi お問い合わせフォーム</a>
+                  までご連絡くださいますようお願いいたします。
+                </dd>
+                <dt>販売価格</dt>
+                <dd>各商品に表記された価格に準じます。</dd>
+                <dt>サービス代金以外の料金</dt>
+                <dd>注文手数料（コンビニ、ATM 決済の場合）</dd>
+                <dt>代金の支払い時期および決済方法</dt>
+                <dd>クレジットカード（即時）、コンビニ決済（支払期限まで）、ATM 決済（支払期限まで） ※予定が変更される場合があります。</dd>
+                <dt>サービスの提供時期</dt>
+                <dd>FlutterKaigiの開催日</dd>
+                <dt>返品・返金</dt>
+                <dd>
+                  チケット購入から 50 日未満、かつ決済方法がクレジットカードの場合のみ、チケットのキャンセル・返金が可能です。コンビニ、ATM 決済ではキャンセル・返金できませんので、あらかじめご了承ください。キャンセルをご希望の場合は、購入後に届く購入完了メールに記載されている購入者のお名前、注文番号を添えて、
+                  <a class="info-list-link" href="#contact">FlutterKaigi お問い合わせフォーム</a>
+                  よりご連絡ください。
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+        <section id="links" class="section section-tinted">
+          <div class="section-inner" data-reveal>
+            <div class="section-head">
+              <div class="section-index"><span>04</span><div class="section-index-line"></div></div>
+              <div>
+                <h2 class="section-title">ドキュメントとコミュニティ</h2>
+                <p class="section-subtitle">Documents &amp; Community</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="card-grid">
+                <div class="card" data-reveal>
+                  <p class="card-subtitle">Documents</p>
+                  <h3 class="card-title">ドキュメント</h3>
+                  <p class="card-lead">当法人が定めるポリシー・ガイドライン・規約です。いずれも日本語で公開しています。</p>
+                  <div class="card-body">
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Code-of-Conduct.ja" target="_blank"><span>行動規範</span><span class="link-arrow">→</span></a>
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Privacy-Policy.ja" target="_blank"><span>プライバシーポリシー</span><span class="link-arrow">→</span></a>
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Exclusion-of-Anti-Social-Forces.ja" target="_blank"><span>反社会的勢力排除ポリシー</span><span class="link-arrow">→</span></a>
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Event-Guidelines.ja" target="_blank"><span>関連イベントのガイドライン</span><span class="link-arrow">→</span></a>
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Terms-for-Join.ja" target="_blank"><span>イベント参加規約</span><span class="link-arrow">→</span></a>
+                    <a class="doc-link" rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Logo-Guidelines.ja" target="_blank"><span>ロゴ使用ガイドライン</span><span class="link-arrow">→</span></a>
+                  </div>
+                </div>
+                <div class="card" data-reveal>
+                  <p class="card-subtitle">Community</p>
+                  <h3 class="card-title">コミュニティに参加する</h3>
+                  <p class="card-lead">
+                    FlutterKaigiのコミュニティに参加して、最新情報を入手したり、他の開発者と交流したりしましょう。なお、FlutterKaigiについては、一般社団法人FlutterKaigiの協力をもって開催されます。
+                  </p>
+                  <div class="card-body">
+                    <a class="social-link" rel="noopener noreferrer" href="https://flutterkaigi.connpass.com/" target="_blank">
+                      <div class="social-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="20px" height="20px">
+                          <path stroke-linejoin="round" d="M4.5 6h15v14.5h-15z" fill="none" stroke="currentColor" stroke-width="1.6"></path>
+                          <path d="M4.5 10.5h15" fill="none" stroke="currentColor" stroke-width="1.6"></path>
+                          <path stroke-linecap="round" d="M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.6"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong class="social-title">connpass</strong>
+                        <span class="social-subtitle">イベントの開催情報を確認して申し込む</span>
+                      </div>
+                    </a>
+                    <a class="social-link" rel="noopener noreferrer" href="https://x.com/FlutterKaigi" target="_blank">
+                      <div class="social-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="20px" height="20px">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <div><strong class="social-title">X</strong><span class="social-subtitle">@FlutterKaigiをフォローする</span></div>
+                    </a>
+                    <a class="social-link" rel="noopener noreferrer" href="https://github.com/FlutterKaigi" target="_blank">
+                      <div class="social-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="20px" height="20px">
+                          <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.086 1.838 1.237 1.838 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.776.42-1.305.762-1.605-2.665-.303-5.467-1.333-5.467-5.932 0-1.31.469-2.382 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.839 1.234 1.911 1.234 3.221 0 4.61-2.807 5.625-5.479 5.922.431.372.815 1.103.815 2.222 0 1.605-.015 2.898-.015 3.293 0 .322.216.696.825.578C20.565 22.295 24 17.797 24 12.5 24 5.87 18.627 .5 12 .5z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <div><strong class="social-title">GitHub</strong><span class="social-subtitle">リポジトリに貢献する</span></div>
+                    </a>
+                    <a class="social-link" rel="noopener noreferrer" href="https://medium.com/flutterkaigi" target="_blank">
+                      <div class="social-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="20px" height="20px">
+                          <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <div><strong class="social-title">Medium</strong><span class="social-subtitle">ブログ記事を読む</span></div>
+                    </a>
+                    <a class="social-link" rel="noopener noreferrer" href="https://www.youtube.com/@flutterkaigi" target="_blank">
+                      <div class="social-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="20px" height="20px">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <div><strong class="social-title">YouTube</strong><span class="social-subtitle">セッション動画を見る</span></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="contact" class="section">
+          <div class="section-inner" data-reveal>
+            <div class="section-head">
+              <div class="section-index"><span>05</span><div class="section-index-line"></div></div>
+              <div><h2 class="section-title">お問い合わせ</h2><p class="section-subtitle">Contact</p></div>
+            </div>
+            <div class="section-body">
+              <div class="contact" data-reveal>
+                <div class="contact-text">
+                  <p class="contact-lead">当法人および FlutterKaigi に関するお問い合わせは、お問い合わせフォームより承ります。内容を確認のうえ、担当者よりご返信いたします。</p>
+                  <p class="contact-note">※お電話でのお問い合わせは承っておりません。</p>
+                </div>
+                <a class="contact-button" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdXjVagTv38Co0A0nwjm5V3k5V3FZZCsB7F-wFQbJxonp5pFg/viewform" target="_blank">
+                  <span>お問い合わせフォームを開く</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="16px" height="16px"><path d="M7 17L17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer><p>© 2021-2026 一般社団法人FlutterKaigi</p></footer>
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <p class="footer-name">一般社団法人FlutterKaigi</p>
+              <p class="footer-address">東京都渋谷区渋谷2丁目19番15号宮益坂ビルディング609</p>
+            </div>
+            <div class="footer-nav">
+              <nav class="footer-column">
+                <p class="footer-column-title">Conferences</p>
+                <a rel="noopener noreferrer" href="https://2026.flutterkaigi.jp/" target="_blank">FlutterKaigi 2026</a>
+                <a rel="noopener noreferrer" href="https://2025.flutterkaigi.jp/" target="_blank">FlutterKaigi 2025</a>
+                <a rel="noopener noreferrer" href="https://2024.flutterkaigi.jp/" target="_blank">FlutterKaigi 2024</a>
+                <a rel="noopener noreferrer" href="https://2023.flutterkaigi.jp/" target="_blank">FlutterKaigi 2023</a>
+                <a rel="noopener noreferrer" href="https://2022.flutterkaigi.jp/" target="_blank">FlutterKaigi 2022</a>
+                <a rel="noopener noreferrer" href="https://2021.flutterkaigi.jp/" target="_blank">FlutterKaigi 2021</a>
+              </nav>
+              <nav class="footer-column">
+                <p class="footer-column-title">Documents</p>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Code-of-Conduct.ja" target="_blank">行動規範</a>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Privacy-Policy.ja" target="_blank">プライバシーポリシー</a>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Exclusion-of-Anti-Social-Forces.ja" target="_blank">反社会的勢力排除ポリシー</a>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Event-Guidelines.ja" target="_blank">関連イベントのガイドライン</a>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Terms-for-Join.ja" target="_blank">イベント参加規約</a>
+                <a rel="noopener noreferrer" href="https://docs.flutterkaigi.jp/Logo-Guidelines.ja" target="_blank">ロゴ使用ガイドライン</a>
+              </nav>
+              <nav class="footer-column">
+                <p class="footer-column-title">Links</p>
+                <a rel="noopener noreferrer" href="https://flutterkaigi.connpass.com/" target="_blank">connpass</a>
+                <a rel="noopener noreferrer" href="https://x.com/FlutterKaigi" target="_blank">X</a>
+                <a rel="noopener noreferrer" href="https://github.com/FlutterKaigi" target="_blank">GitHub</a>
+                <a rel="noopener noreferrer" href="https://medium.com/flutterkaigi" target="_blank">Medium</a>
+                <a rel="noopener noreferrer" href="https://www.youtube.com/@flutterkaigi" target="_blank">YouTube</a>
+              </nav>
+            </div>
+          </div>
+          <p class="footer-copyright">© 2021-2026 一般社団法人FlutterKaigi</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
