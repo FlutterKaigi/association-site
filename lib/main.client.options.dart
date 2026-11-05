@@ -6,6 +6,8 @@
 
 import 'package:jaspr/client.dart';
 
+import 'package:associate_site/components/header.dart' deferred as _header;
+
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
 /// Use this to initialize Jaspr **before** calling [runApp].
@@ -22,4 +24,11 @@ import 'package:jaspr/client.dart';
 ///   runApp(...);
 /// }
 /// ```
-ClientOptions get defaultClientOptions => ClientOptions();
+ClientOptions get defaultClientOptions => ClientOptions(
+  clients: {
+    'header': ClientLoader(
+      (p) => _header.Header(),
+      loader: _header.loadLibrary,
+    ),
+  },
+);
